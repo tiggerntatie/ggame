@@ -1,0 +1,6088 @@
+<!doctype html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+
+    <title>ggmath API documentation</title>
+    <meta name="description" content="" />
+
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300' rel='stylesheet' type='text/css'>
+  
+  <style type="text/css">
+  
+* {
+  box-sizing: border-box;
+}
+/*! normalize.css v1.1.1 | MIT License | git.io/normalize */
+
+/* ==========================================================================
+   HTML5 display definitions
+   ========================================================================== */
+
+/**
+ * Correct `block` display not defined in IE 6/7/8/9 and Firefox 3.
+ */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+    display: block;
+}
+
+/**
+ * Correct `inline-block` display not defined in IE 6/7/8/9 and Firefox 3.
+ */
+
+audio,
+canvas,
+video {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+}
+
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+
+audio:not([controls]) {
+    display: none;
+    height: 0;
+}
+
+/**
+ * Address styling not present in IE 7/8/9, Firefox 3, and Safari 4.
+ * Known issue: no IE 6 support.
+ */
+
+[hidden] {
+    display: none;
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+/**
+ * 1. Prevent system color scheme's background color being used in Firefox, IE,
+ *    and Opera.
+ * 2. Prevent system color scheme's text color being used in Firefox, IE, and
+ *    Opera.
+ * 3. Correct text resizing oddly in IE 6/7 when body `font-size` is set using
+ *    `em` units.
+ * 4. Prevent iOS text size adjust after orientation change, without disabling
+ *    user zoom.
+ */
+
+html {
+    background: #fff; /* 1 */
+    color: #000; /* 2 */
+    font-size: 100%; /* 3 */
+    -webkit-text-size-adjust: 100%; /* 4 */
+    -ms-text-size-adjust: 100%; /* 4 */
+}
+
+/**
+ * Address `font-family` inconsistency between `textarea` and other form
+ * elements.
+ */
+
+html,
+button,
+input,
+select,
+textarea {
+    font-family: sans-serif;
+}
+
+/**
+ * Address margins handled incorrectly in IE 6/7.
+ */
+
+body {
+    margin: 0;
+}
+
+/* ==========================================================================
+   Links
+   ========================================================================== */
+
+/**
+ * Address `outline` inconsistency between Chrome and other browsers.
+ */
+
+a:focus {
+    outline: thin dotted;
+}
+
+/**
+ * Improve readability when focused and also mouse hovered in all browsers.
+ */
+
+a:active,
+a:hover {
+    outline: 0;
+}
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+
+/**
+ * Address font sizes and margins set differently in IE 6/7.
+ * Address font sizes within `section` and `article` in Firefox 4+, Safari 5,
+ * and Chrome.
+ */
+
+h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+}
+
+h2 {
+    font-size: 1.5em;
+    margin: 0.83em 0;
+}
+
+h3 {
+    font-size: 1.17em;
+    margin: 1em 0;
+}
+
+h4 {
+    font-size: 1em;
+    margin: 1.33em 0;
+}
+
+h5 {
+    font-size: 0.83em;
+    margin: 1.67em 0;
+}
+
+h6 {
+    font-size: 0.67em;
+    margin: 2.33em 0;
+}
+
+/**
+ * Address styling not present in IE 7/8/9, Safari 5, and Chrome.
+ */
+
+abbr[title] {
+    border-bottom: 1px dotted;
+}
+
+/**
+ * Address style set to `bolder` in Firefox 3+, Safari 4/5, and Chrome.
+ */
+
+b,
+strong {
+    font-weight: bold;
+}
+
+blockquote {
+    margin: 1em 40px;
+}
+
+/**
+ * Address styling not present in Safari 5 and Chrome.
+ */
+
+dfn {
+    font-style: italic;
+}
+
+/**
+ * Address differences between Firefox and other browsers.
+ * Known issue: no IE 6/7 normalization.
+ */
+
+hr {
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    height: 0;
+}
+
+/**
+ * Address styling not present in IE 6/7/8/9.
+ */
+
+mark {
+    background: #ff0;
+    color: #000;
+}
+
+/**
+ * Address margins set differently in IE 6/7.
+ */
+
+p,
+pre {
+    margin: 1em 0;
+}
+
+/**
+ * Correct font family set oddly in IE 6, Safari 4/5, and Chrome.
+ */
+
+code,
+kbd,
+pre,
+samp {
+    font-family: monospace, serif;
+    _font-family: 'courier new', monospace;
+    font-size: 1em;
+}
+
+/**
+ * Improve readability of pre-formatted text in all browsers.
+ */
+
+pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/**
+ * Address CSS quotes not supported in IE 6/7.
+ */
+
+q {
+    quotes: none;
+}
+
+/**
+ * Address `quotes` property not supported in Safari 4.
+ */
+
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+
+small {
+    font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sup {
+    top: -0.5em;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+/* ==========================================================================
+   Lists
+   ========================================================================== */
+
+/**
+ * Address margins set differently in IE 6/7.
+ */
+
+dl,
+menu,
+ol,
+ul {
+    margin: 1em 0;
+}
+
+dd {
+    margin: 0 0 0 40px;
+}
+
+/**
+ * Address paddings set differently in IE 6/7.
+ */
+
+menu,
+ol,
+ul {
+    padding: 0 0 0 40px;
+}
+
+/**
+ * Correct list images handled incorrectly in IE 7.
+ */
+
+nav ul,
+nav ol {
+    list-style: none;
+    list-style-image: none;
+}
+
+/* ==========================================================================
+   Embedded content
+   ========================================================================== */
+
+/**
+ * 1. Remove border when inside `a` element in IE 6/7/8/9 and Firefox 3.
+ * 2. Improve image quality when scaled in IE 7.
+ */
+
+img {
+    border: 0; /* 1 */
+    -ms-interpolation-mode: bicubic; /* 2 */
+}
+
+/**
+ * Correct overflow displayed oddly in IE 9.
+ */
+
+svg:not(:root) {
+    overflow: hidden;
+}
+
+/* ==========================================================================
+   Figures
+   ========================================================================== */
+
+/**
+ * Address margin not present in IE 6/7/8/9, Safari 5, and Opera 11.
+ */
+
+figure {
+    margin: 0;
+}
+
+/* ==========================================================================
+   Forms
+   ========================================================================== */
+
+/**
+ * Correct margin displayed oddly in IE 6/7.
+ */
+
+form {
+    margin: 0;
+}
+
+/**
+ * Define consistent border, margin, and padding.
+ */
+
+fieldset {
+    border: 1px solid #c0c0c0;
+    margin: 0 2px;
+    padding: 0.35em 0.625em 0.75em;
+}
+
+/**
+ * 1. Correct color not being inherited in IE 6/7/8/9.
+ * 2. Correct text not wrapping in Firefox 3.
+ * 3. Correct alignment displayed oddly in IE 6/7.
+ */
+
+legend {
+    border: 0; /* 1 */
+    padding: 0;
+    white-space: normal; /* 2 */
+    *margin-left: -7px; /* 3 */
+}
+
+/**
+ * 1. Correct font size not being inherited in all browsers.
+ * 2. Address margins set differently in IE 6/7, Firefox 3+, Safari 5,
+ *    and Chrome.
+ * 3. Improve appearance and consistency in all browsers.
+ */
+
+button,
+input,
+select,
+textarea {
+    font-size: 100%; /* 1 */
+    margin: 0; /* 2 */
+    vertical-align: baseline; /* 3 */
+    *vertical-align: middle; /* 3 */
+}
+
+/**
+ * Address Firefox 3+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+
+button,
+input {
+    line-height: normal;
+}
+
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Chrome, Safari 5+, and IE 6+.
+ * Correct `select` style inheritance in Firefox 4+ and Opera.
+ */
+
+button,
+select {
+    text-transform: none;
+}
+
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ * 4. Remove inner spacing in IE 7 without affecting normal text inputs.
+ *    Known issue: inner spacing remains in IE 6.
+ */
+
+button,
+html input[type="button"], /* 1 */
+input[type="reset"],
+input[type="submit"] {
+    -webkit-appearance: button; /* 2 */
+    cursor: pointer; /* 3 */
+    *overflow: visible;  /* 4 */
+}
+
+/**
+ * Re-set default cursor for disabled elements.
+ */
+
+button[disabled],
+html input[disabled] {
+    cursor: default;
+}
+
+/**
+ * 1. Address box sizing set to content-box in IE 8/9.
+ * 2. Remove excess padding in IE 8/9.
+ * 3. Remove excess padding in IE 7.
+ *    Known issue: excess padding remains in IE 6.
+ */
+
+input[type="checkbox"],
+input[type="radio"] {
+    box-sizing: border-box; /* 1 */
+    padding: 0; /* 2 */
+    *height: 13px; /* 3 */
+    *width: 13px; /* 3 */
+}
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome
+ *    (include `-moz` to future-proof).
+ */
+
+input[type="search"] {
+    -webkit-appearance: textfield; /* 1 */
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box; /* 2 */
+    box-sizing: content-box;
+}
+
+/**
+ * Remove inner padding and search cancel button in Safari 5 and Chrome
+ * on OS X.
+ */
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+
+/**
+ * Remove inner padding and border in Firefox 3+.
+ */
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+/**
+ * 1. Remove default vertical scrollbar in IE 6/7/8/9.
+ * 2. Improve readability and alignment in all browsers.
+ */
+
+textarea {
+    overflow: auto; /* 1 */
+    vertical-align: top; /* 2 */
+}
+
+/* ==========================================================================
+   Tables
+   ========================================================================== */
+
+/**
+ * Remove most spacing between table cells.
+ */
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+  </style>
+
+  <style type="text/css">
+  
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+  body {
+    background: #fff;
+    font-family: "Source Sans Pro", "Helvetica Neueue", Helvetica, sans;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.6em;
+  }
+  #content {
+    width: 70%;
+    max-width: 850px;
+    float: left;
+    padding: 30px 60px;
+    border-left: 1px solid #ddd;
+  }
+  #sidebar {
+    width: 25%;
+    float: left;
+    padding: 30px;
+    overflow: hidden;
+  }
+  #nav {
+    font-size: 130%;
+    margin: 0 0 15px 0;
+  }
+
+  #top {
+    display: block;
+    position: fixed;
+    bottom: 5px;
+    left: 5px;
+    font-size: .85em;
+    text-transform: uppercase;
+  }
+
+  #footer {
+    font-size: .75em;
+    padding: 5px 30px;
+    border-top: 1px solid #ddd;
+    text-align: right;
+  }
+    #footer p {
+      margin: 0 0 0 30px;
+      display: inline-block;
+    }
+
+  h1, h2, h3, h4, h5 {
+    font-weight: 300;
+  }
+  h1 {
+    font-size: 2.5em;
+    line-height: 1.1em;
+    margin: 0 0 .50em 0;
+  }
+
+  h2 {
+    font-size: 1.75em;
+    margin: 1em 0 .50em 0;
+  }
+
+  h3 {
+    margin: 25px 0 10px 0;
+  }
+
+  h4 {
+    margin: 0;
+    font-size: 105%;
+  }
+
+  a {
+    color: #058;
+    text-decoration: none;
+    transition: color .3s ease-in-out;
+  }
+
+  a:hover {
+    color: #e08524;
+    transition: color .3s ease-in-out;
+  }
+
+  pre, code, .mono, .name {
+    font-family: "Ubuntu Mono", "Cousine", "DejaVu Sans Mono", monospace;
+  }
+
+  .title .name {
+    font-weight: bold;
+  }
+  .section-title {
+    margin-top: 2em;
+  }
+  .ident {
+    color: #900;
+  }
+
+  code {
+    background: #f9f9f9;
+  } 
+
+  pre {
+    background: #fefefe;
+    border: 1px solid #ddd;
+    box-shadow: 2px 2px 0 #f3f3f3;
+    margin: 0 30px;
+    padding: 15px 30px;
+  }
+
+  .codehilite {
+    margin: 0 30px 10px 30px;
+  }
+
+    .codehilite pre {
+      margin: 0;
+    }
+    .codehilite .err { background: #ff3300; color: #fff !important; } 
+
+  table#module-list {
+    font-size: 110%;
+  }
+
+    table#module-list tr td:first-child {
+      padding-right: 10px;
+      white-space: nowrap;
+    }
+
+    table#module-list td {
+      vertical-align: top;
+      padding-bottom: 8px;
+    }
+
+      table#module-list td p {
+        margin: 0 0 7px 0;
+      }
+
+  .def {
+    display: table;
+  }
+
+    .def p {
+      display: table-cell;
+      vertical-align: top;
+      text-align: left;
+    }
+
+    .def p:first-child {
+      white-space: nowrap;
+    }
+
+    .def p:last-child {
+      width: 100%;
+    }
+
+
+  #index {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+    ul#index .class_name {
+      /* font-size: 110%; */
+      font-weight: bold;
+    }
+    #index ul {
+      margin: 0;
+    }
+
+  .item {
+    margin: 0 0 15px 0;
+  }
+
+    .item .class {
+      margin: 0 0 25px 30px;
+    }
+
+      .item .class ul.class_list {
+        margin: 0 0 20px 0;
+      }
+
+    .item .name {
+      background: #fafafa;
+      margin: 0;
+      font-weight: bold;
+      padding: 5px 10px;
+      border-radius: 3px;
+      display: inline-block;
+      min-width: 40%;
+    }
+      .item .name:hover {
+        background: #f6f6f6;
+      }
+
+    .item .empty_desc {
+      margin: 0 0 5px 0;
+      padding: 0;
+    }
+
+    .item .inheritance {
+      margin: 3px 0 0 30px;
+    }
+
+    .item .inherited {
+      color: #666;
+    }
+
+    .item .desc {
+      padding: 0 8px;
+      margin: 0;
+    }
+
+      .item .desc p {
+        margin: 0 0 10px 0;
+      }
+
+    .source_cont {
+      margin: 0;
+      padding: 0;
+    }
+
+    .source_link a {
+      background: #ffc300;
+      font-weight: 400;
+      font-size: .75em;
+      text-transform: uppercase;
+      color: #fff;
+      text-shadow: 1px 1px 0 #f4b700;
+      
+      padding: 3px 8px;
+      border-radius: 2px;
+      transition: background .3s ease-in-out;
+    }
+      .source_link a:hover {
+        background: #FF7200;
+        text-shadow: none;
+        transition: background .3s ease-in-out;
+      }
+
+    .source {
+      display: none;
+      max-height: 600px;
+      overflow-y: scroll;
+      margin-bottom: 15px;
+    }
+
+      .source .codehilite {
+        margin: 0;
+      }
+
+  .desc h1, .desc h2, .desc h3 {
+    font-size: 100% !important;
+  }
+  .clear {
+    clear: both;
+  }
+
+  @media all and (max-width: 950px) {
+    #sidebar {
+      width: 35%;
+    }
+    #content {
+      width: 65%;
+    }
+  }
+  @media all and (max-width: 650px) {
+    #top {
+      display: none;
+    }
+    #sidebar {
+      float: none;
+      width: auto;
+    }
+    #content {
+      float: none;
+      width: auto;
+      padding: 30px;
+    }
+
+    #index ul {
+      padding: 0;
+      margin-bottom: 15px;
+    }
+    #index ul li {
+      display: inline-block;
+      margin-right: 30px;
+    }
+    #footer {
+      text-align: left;
+    }
+    #footer p {
+      display: block;
+      margin: inherit;
+    }
+  }
+
+  /*****************************/
+
+  </style>
+
+
+  <style type="text/css">
+  
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+    /* Style adjustments for viewports that meet the condition */
+}
+
+@media print,
+       (-o-min-device-pixel-ratio: 5/4),
+       (-webkit-min-device-pixel-ratio: 1.25),
+       (min-resolution: 120dpi) {
+    /* Style adjustments for high resolution devices */
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid required HTTP connection: h5bp.com/r
+   ========================================================================== */
+
+@media print {
+    * {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster: h5bp.com/s */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links for images, or javascript/internal links
+     */
+
+    .ir a:after,
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group; /* h5bp.com/t */
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    @page {
+        margin: 0.5cm;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}
+
+  </style>
+
+  <script type="text/javascript">
+  function toggle(id, $link) {
+    $node = document.getElementById(id);
+    if (!$node)
+    return;
+    if (!$node.style.display || $node.style.display == 'none') {
+    $node.style.display = 'block';
+    $link.innerHTML = 'Hide source &nequiv;';
+    } else {
+    $node.style.display = 'none';
+    $link.innerHTML = 'Show source &equiv;';
+    }
+  }
+  </script>
+</head>
+<body>
+<a href="#" id="top">Top</a>
+
+<div id="container">
+    
+  
+  <div id="sidebar">
+    <h1>Index</h1>
+    <ul id="index">
+
+
+    <li class="set"><h3><a href="#header-classes">Classes</a></h3>
+      <ul>
+        <li class="mono">
+        <span class="class_name"><a href="#ggmath.InputButton">InputButton</a></span>
+        
+          
+  <ul>
+    <li class="mono"><a href="#ggmath.InputButton.__init__">__init__</a></li>
+    <li class="mono"><a href="#ggmath.InputButton.Eval">Eval</a></li>
+    <li class="mono"><a href="#ggmath.InputButton.circularCollisionModel">circularCollisionModel</a></li>
+    <li class="mono"><a href="#ggmath.InputButton.collidingWith">collidingWith</a></li>
+    <li class="mono"><a href="#ggmath.InputButton.collidingWithSprites">collidingWithSprites</a></li>
+    <li class="mono"><a href="#ggmath.InputButton.destroy">destroy</a></li>
+    <li class="mono"><a href="#ggmath.InputButton.firstImage">firstImage</a></li>
+    <li class="mono"><a href="#ggmath.InputButton.lastImage">lastImage</a></li>
+    <li class="mono"><a href="#ggmath.InputButton.nextImage">nextImage</a></li>
+    <li class="mono"><a href="#ggmath.InputButton.physicalPointTouching">physicalPointTouching</a></li>
+    <li class="mono"><a href="#ggmath.InputButton.prevImage">prevImage</a></li>
+    <li class="mono"><a href="#ggmath.InputButton.processEvent">processEvent</a></li>
+    <li class="mono"><a href="#ggmath.InputButton.rectangularCollisionModel">rectangularCollisionModel</a></li>
+    <li class="mono"><a href="#ggmath.InputButton.select">select</a></li>
+    <li class="mono"><a href="#ggmath.InputButton.setImage">setImage</a></li>
+    <li class="mono"><a href="#ggmath.InputButton.step">step</a></li>
+    <li class="mono"><a href="#ggmath.InputButton.translate">translate</a></li>
+    <li class="mono"><a href="#ggmath.InputButton.unselect">unselect</a></li>
+  </ul>
+
+        </li>
+        <li class="mono">
+        <span class="class_name"><a href="#ggmath.InputNumeric">InputNumeric</a></span>
+        
+          
+  <ul>
+    <li class="mono"><a href="#ggmath.InputNumeric.__init__">__init__</a></li>
+    <li class="mono"><a href="#ggmath.InputNumeric.Eval">Eval</a></li>
+    <li class="mono"><a href="#ggmath.InputNumeric.circularCollisionModel">circularCollisionModel</a></li>
+    <li class="mono"><a href="#ggmath.InputNumeric.collidingWith">collidingWith</a></li>
+    <li class="mono"><a href="#ggmath.InputNumeric.collidingWithSprites">collidingWithSprites</a></li>
+    <li class="mono"><a href="#ggmath.InputNumeric.destroy">destroy</a></li>
+    <li class="mono"><a href="#ggmath.InputNumeric.firstImage">firstImage</a></li>
+    <li class="mono"><a href="#ggmath.InputNumeric.lastImage">lastImage</a></li>
+    <li class="mono"><a href="#ggmath.InputNumeric.nextImage">nextImage</a></li>
+    <li class="mono"><a href="#ggmath.InputNumeric.physicalPointTouching">physicalPointTouching</a></li>
+    <li class="mono"><a href="#ggmath.InputNumeric.prevImage">prevImage</a></li>
+    <li class="mono"><a href="#ggmath.InputNumeric.processEvent">processEvent</a></li>
+    <li class="mono"><a href="#ggmath.InputNumeric.rectangularCollisionModel">rectangularCollisionModel</a></li>
+    <li class="mono"><a href="#ggmath.InputNumeric.select">select</a></li>
+    <li class="mono"><a href="#ggmath.InputNumeric.setImage">setImage</a></li>
+    <li class="mono"><a href="#ggmath.InputNumeric.step">step</a></li>
+    <li class="mono"><a href="#ggmath.InputNumeric.translate">translate</a></li>
+    <li class="mono"><a href="#ggmath.InputNumeric.unselect">unselect</a></li>
+  </ul>
+
+        </li>
+        <li class="mono">
+        <span class="class_name"><a href="#ggmath.Label">Label</a></span>
+        
+          
+  <ul>
+    <li class="mono"><a href="#ggmath.Label.__init__">__init__</a></li>
+    <li class="mono"><a href="#ggmath.Label.Eval">Eval</a></li>
+    <li class="mono"><a href="#ggmath.Label.circularCollisionModel">circularCollisionModel</a></li>
+    <li class="mono"><a href="#ggmath.Label.collidingWith">collidingWith</a></li>
+    <li class="mono"><a href="#ggmath.Label.collidingWithSprites">collidingWithSprites</a></li>
+    <li class="mono"><a href="#ggmath.Label.destroy">destroy</a></li>
+    <li class="mono"><a href="#ggmath.Label.firstImage">firstImage</a></li>
+    <li class="mono"><a href="#ggmath.Label.lastImage">lastImage</a></li>
+    <li class="mono"><a href="#ggmath.Label.nextImage">nextImage</a></li>
+    <li class="mono"><a href="#ggmath.Label.physicalPointTouching">physicalPointTouching</a></li>
+    <li class="mono"><a href="#ggmath.Label.prevImage">prevImage</a></li>
+    <li class="mono"><a href="#ggmath.Label.processEvent">processEvent</a></li>
+    <li class="mono"><a href="#ggmath.Label.rectangularCollisionModel">rectangularCollisionModel</a></li>
+    <li class="mono"><a href="#ggmath.Label.select">select</a></li>
+    <li class="mono"><a href="#ggmath.Label.setImage">setImage</a></li>
+    <li class="mono"><a href="#ggmath.Label.step">step</a></li>
+    <li class="mono"><a href="#ggmath.Label.translate">translate</a></li>
+    <li class="mono"><a href="#ggmath.Label.unselect">unselect</a></li>
+  </ul>
+
+        </li>
+        <li class="mono">
+        <span class="class_name"><a href="#ggmath.LineSegment">LineSegment</a></span>
+        
+          
+  <ul>
+    <li class="mono"><a href="#ggmath.LineSegment.__init__">__init__</a></li>
+    <li class="mono"><a href="#ggmath.LineSegment.Eval">Eval</a></li>
+    <li class="mono"><a href="#ggmath.LineSegment.circularCollisionModel">circularCollisionModel</a></li>
+    <li class="mono"><a href="#ggmath.LineSegment.collidingWith">collidingWith</a></li>
+    <li class="mono"><a href="#ggmath.LineSegment.collidingWithSprites">collidingWithSprites</a></li>
+    <li class="mono"><a href="#ggmath.LineSegment.destroy">destroy</a></li>
+    <li class="mono"><a href="#ggmath.LineSegment.firstImage">firstImage</a></li>
+    <li class="mono"><a href="#ggmath.LineSegment.lastImage">lastImage</a></li>
+    <li class="mono"><a href="#ggmath.LineSegment.nextImage">nextImage</a></li>
+    <li class="mono"><a href="#ggmath.LineSegment.physicalPointTouching">physicalPointTouching</a></li>
+    <li class="mono"><a href="#ggmath.LineSegment.prevImage">prevImage</a></li>
+    <li class="mono"><a href="#ggmath.LineSegment.processEvent">processEvent</a></li>
+    <li class="mono"><a href="#ggmath.LineSegment.rectangularCollisionModel">rectangularCollisionModel</a></li>
+    <li class="mono"><a href="#ggmath.LineSegment.select">select</a></li>
+    <li class="mono"><a href="#ggmath.LineSegment.setImage">setImage</a></li>
+    <li class="mono"><a href="#ggmath.LineSegment.step">step</a></li>
+    <li class="mono"><a href="#ggmath.LineSegment.translate">translate</a></li>
+    <li class="mono"><a href="#ggmath.LineSegment.unselect">unselect</a></li>
+  </ul>
+
+        </li>
+        <li class="mono">
+        <span class="class_name"><a href="#ggmath.MathApp">MathApp</a></span>
+        
+          
+  <ul>
+    <li class="mono"><a href="#ggmath.MathApp.__init__">__init__</a></li>
+    <li class="mono"><a href="#ggmath.MathApp.handleMouseClick">handleMouseClick</a></li>
+    <li class="mono"><a href="#ggmath.MathApp.handleMouseDown">handleMouseDown</a></li>
+    <li class="mono"><a href="#ggmath.MathApp.handleMouseMove">handleMouseMove</a></li>
+    <li class="mono"><a href="#ggmath.MathApp.handleMouseUp">handleMouseUp</a></li>
+    <li class="mono"><a href="#ggmath.MathApp.handleMouseWheel">handleMouseWheel</a></li>
+    <li class="mono"><a href="#ggmath.MathApp.run">run</a></li>
+    <li class="mono"><a href="#ggmath.MathApp.step">step</a></li>
+  </ul>
+
+        </li>
+        <li class="mono">
+        <span class="class_name"><a href="#ggmath.Point">Point</a></span>
+        
+          
+  <ul>
+    <li class="mono"><a href="#ggmath.Point.__init__">__init__</a></li>
+    <li class="mono"><a href="#ggmath.Point.Eval">Eval</a></li>
+    <li class="mono"><a href="#ggmath.Point.circularCollisionModel">circularCollisionModel</a></li>
+    <li class="mono"><a href="#ggmath.Point.collidingWith">collidingWith</a></li>
+    <li class="mono"><a href="#ggmath.Point.collidingWithSprites">collidingWithSprites</a></li>
+    <li class="mono"><a href="#ggmath.Point.destroy">destroy</a></li>
+    <li class="mono"><a href="#ggmath.Point.firstImage">firstImage</a></li>
+    <li class="mono"><a href="#ggmath.Point.lastImage">lastImage</a></li>
+    <li class="mono"><a href="#ggmath.Point.nextImage">nextImage</a></li>
+    <li class="mono"><a href="#ggmath.Point.physicalPointTouching">physicalPointTouching</a></li>
+    <li class="mono"><a href="#ggmath.Point.prevImage">prevImage</a></li>
+    <li class="mono"><a href="#ggmath.Point.processEvent">processEvent</a></li>
+    <li class="mono"><a href="#ggmath.Point.rectangularCollisionModel">rectangularCollisionModel</a></li>
+    <li class="mono"><a href="#ggmath.Point.select">select</a></li>
+    <li class="mono"><a href="#ggmath.Point.setImage">setImage</a></li>
+    <li class="mono"><a href="#ggmath.Point.step">step</a></li>
+    <li class="mono"><a href="#ggmath.Point.translate">translate</a></li>
+    <li class="mono"><a href="#ggmath.Point.unselect">unselect</a></li>
+  </ul>
+
+        </li>
+        <li class="mono">
+        <span class="class_name"><a href="#ggmath.Timer">Timer</a></span>
+        
+          
+  <ul>
+    <li class="mono"><a href="#ggmath.Timer.__init__">__init__</a></li>
+    <li class="mono"><a href="#ggmath.Timer.Eval">Eval</a></li>
+    <li class="mono"><a href="#ggmath.Timer.destroy">destroy</a></li>
+    <li class="mono"><a href="#ggmath.Timer.reset">reset</a></li>
+    <li class="mono"><a href="#ggmath.Timer.step">step</a></li>
+  </ul>
+
+        </li>
+      </ul>
+    </li>
+
+    </ul>
+  </div>
+
+    <article id="content">
+      
+  
+
+  
+
+
+  <header id="section-intro">
+  <h1 class="title"><span class="name">ggmath</span> module</h1>
+  
+  
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath" class="source">
+    <pre><code># ggmath - ggame extensions for geometry and mathematics in the browser
+
+from ggame import Color, LineStyle, LineAsset, CircleAsset, Sprite, App
+from ggame import TextAsset
+from abc import ABCMeta, abstractmethod
+
+from math import sin, cos, sqrt
+from time import time
+
+
+
+class _MathDynamic(metaclass=ABCMeta):
+    
+    def __init__(self):
+        self._dynamic = False  # not switched on, by default!
+    
+    def destroy(self):
+        MathApp._removeDynamic(self)
+
+    @abstractmethod
+    def step(self):
+        pass
+    
+    def Eval(self, val):
+        if callable(val):
+            self._setDynamic() # dynamically defined .. must step
+            return val
+        else:
+            return lambda : val  
+            
+    def _setDynamic(self):
+        MathApp._addDynamic(self)
+        self._dynamic = True
+            
+
+class _MathVisual(Sprite, _MathDynamic, metaclass=ABCMeta):
+    
+    def __init__(self, asset, pos):
+        MathApp._addVisual(self)
+        Sprite.__init__(self, asset, pos)
+        _MathDynamic.__init__(self)
+        self._movable = False
+        self._selectable = False
+        self.selected = False
+    
+    def destroy(self):
+        MathApp._removeVisual(self)
+        MathApp._removeMovable(self)
+        _MathDynamic.destroy(self)
+        Sprite.destroy(self)
+
+    def _updateAsset(self, asset):
+        visible = self.GFX.visible
+        if App._win != None:
+            App._win.remove(self.GFX)
+        self.asset = asset
+        self.GFX = self.asset.GFX
+        self.GFX.visible = visible        
+        if App._win != None:
+            App._win.add(self.GFX)
+            
+    @property
+    def movable(self):
+        return self._movable
+        
+    @movable.setter
+    def movable(self, val):
+        if not self._dynamic:
+            self._movable = val
+            if val:
+                MathApp._addMovable(self)
+            else:
+                MathApp._removeMovable(self)
+
+    @property
+    def selectable(self):
+        return self._selectable
+        
+    @selectable.setter
+    def selectable(self, val):
+        self._selectable = val
+        if val:
+            MathApp._addSelectable(self)
+        else:
+            MathApp._removeSelectable(self)
+
+    
+    def select(self):
+        self.selected = True
+
+
+    def unselect(self):
+        self.selected = False
+
+    def processEvent(self, event):
+        pass
+
+    # define how your class responds to mouse clicks - returns True/False
+    @abstractmethod
+    def physicalPointTouching(self, ppos):
+        pass
+    
+    # define how your class responds to being moved (physical units)
+    @abstractmethod
+    def translate(self, pdisp):
+        pass
+            
+    @abstractmethod
+    def _newAsset(self):    
+        pass
+
+    @abstractmethod
+    def _touchAsset(self):
+        pass
+
+class Timer(_MathDynamic):
+    
+    def __init__(self):
+        super().__init__()
+        self.reset()
+        self.step()
+        MathApp._addDynamic(self)  # always dynamically defined
+        
+    def reset(self):
+        self._reset = MathApp.time
+        
+    def step(self):
+        self.time = MathApp.time - self._reset
+        
+
+class Label(_MathVisual):
+    
+    def __init__(self, pos, text, positioning="logical", size=10, width=200, color=Color(0,1)):
+        self._text = self.Eval(text) # create a *callable* text value function
+        self._ptext = self._text()
+        self._pos = self.Eval(pos)
+        self._positioning = positioning
+        self._size = size
+        self._width = width
+        self._color = color
+        if self._positioning == "physical":
+            self._ppos = self._pos()
+        else:
+            self._ppos = MathApp.logicalToPhysical(self._pos())
+            
+        super().__init__(TextAsset(self._ptext, 
+                style="{0}px Arial".format(self._size), 
+                width=self._width,
+                color=self._color), 
+            self._ppos)
+
+    def _newAsset(self, pos, text, size, width, color):    
+        if self._positioning != "physical":
+            ppos = MathApp.logicalToPhysical(pos())
+        else:
+            ppos = pos()
+        text = text()
+        if ppos != self._ppos or text != self._ptext:
+            self._ppos = ppos
+            self._ptext = text
+            self._updateAsset(TextAsset(text, 
+                style="{0}px Arial".format(size),
+                width=width,
+                color=color))
+            self.position = ppos
+        
+    def __call__(self):
+        return self._text()
+
+    def _touchAsset(self):
+        self._newAsset(self._pos, self._text, self._size, self._width, self._color)
+
+    def step(self):
+        self._touchAsset()
+    
+    def physicalPointTouching(self, ppos):
+        return (ppos[0] >= self._ppos[0] and 
+            ppos[0] <= self._ppos[0] + self._width and
+            ppos[1] >= self._ppos[1] and 
+            ppos[1] <= self._ppos[1] + self._size)
+
+    def translate(self, pdisp):
+        pass
+
+
+class InputButton(Label):
+    
+    def __init__(self, pos, text, callback, positioning="logical", 
+            size=10, width=200, color=Color(0,1)):
+        self._callback = callback
+        super().__init__(pos, text, positioning=positioning,
+            size=size, width=width, color=color)
+        self.selectable = True
+
+    def select(self):
+        super().select()
+        self._callback()
+        self.unselect()
+
+    def unselect(self):
+        super().unselect()
+
+        
+class InputNumeric(Label):
+
+    def __init__(self, pos, val, fmt="{0.2}", positioning="logical", size=10, 
+            width=200, color=Color(0,1)):
+        self._fmt = fmt
+        self._val = self.Eval(val)()  # initialize to simple numeric
+        self._savedval = self._val
+        self._updateText()
+        super().__init__(pos, self._text, positioning=positioning, 
+            size=size, width=width, color=color)
+        self.selectable = True
+
+    def _updateText(self):
+        self._text = self.Eval(self._fmt.format(self._val))
+
+    def processEvent(self, event):
+        if event.key in "0123456789insertdelete":
+            key = event.key
+            if event.key == 'insert':
+                key = '-'
+            elif event.key == 'delete':
+                key = '.'
+            if self._text() == "0":
+                self._text = self.Eval("")
+            self._text = self.Eval(self._text() + key)
+            self._touchAsset()
+        elif event.key in ['enter','escape']:
+            if event.key == 'enter':
+                try:
+                    self._val = float(self._text())
+                except ValueError:
+                    self._val = self._savedval
+                self._savedval = self._val
+            self.unselect()
+            
+
+    def select(self):
+        super().select()
+        self._savedval = self._val
+        self._val = 0
+        self._updateText()
+        self._touchAsset()
+        MathApp.listenKeyEvent("keypress", "*", self.processEvent)
+
+    def unselect(self):
+        super().unselect()
+        self._val = self._savedval
+        self._updateText()
+        self._touchAsset()
+        try:
+            MathApp.unlistenKeyEvent("keypress", "*", self.processEvent)
+        except ValueError:
+            pass
+
+    def __call__(self):
+        return self._val
+
+
+class Point(_MathVisual):
+    
+    def __init__(self, pos, size=5, color=Color(0,1), style=LineStyle(0, Color(0,1))):
+        self._pos = self.Eval(pos)  # create a *callable* position function
+        self._ppos = MathApp.logicalToPhysical(self._pos()) # physical position
+        self._size = size
+        self._color = color
+        self._style = style
+        super().__init__(CircleAsset(size, style, color), self._ppos)
+        self.center = (0.5, 0.5)
+        
+    def __call__(self):
+        return self._pos()
+
+    def _newAsset(self, pos, size, color, style):
+        ppos = MathApp.logicalToPhysical(pos())
+        if ppos != self._ppos:
+            self._ppos = ppos
+            self._updateAsset(CircleAsset(size, style, color))
+            self.position = ppos
+            self._setExtents()
+
+    def _touchAsset(self):
+        self._newAsset(self._pos, self._size, self._color, self._style)
+
+    def step(self):
+        self._touchAsset()
+
+    def physicalPointTouching(self, ppos):
+        return MathApp.distance(ppos, self._ppos) < self._size
+        
+    def translate(self, pdisp):
+        ldisp = MathApp.translatePhysicalToLogical(pdisp)
+        pos = self._pos()
+        self._pos = self.Eval((pos[0] + ldisp[0], pos[1] + ldisp[1]))
+        self._touchAsset()
+
+
+class LineSegment(_MathVisual):
+    
+    def __init__(self, start, end, style=LineStyle(1, Color(0,1))):
+        self._start = self.Eval(start)  # save function
+        self._end = self.Eval(end)
+        self._style = style
+        self._pstart = MathApp.logicalToPhysical(self._start())
+        self._pend = MathApp.logicalToPhysical(self._end())
+        super().__init__(LineAsset(self._pend[0]-self._pstart[0], 
+            self._pend[1]-self._pstart[1], style), self._pstart)
+
+    def _newAsset(self, start, end, style):
+        pstart = MathApp.logicalToPhysical(start())
+        pend = MathApp.logicalToPhysical(end())
+        if pstart != self._pstart or pend != self._pend:
+            self._pstart = pstart
+            self._pend = pend
+            self._updateAsset(LineAsset(pend[0]-pstart[0], pend[1]-pstart[1], style))
+            self.position = pstart
+
+    def _touchAsset(self):
+        self._newAsset(self._start, self._end, self._style)
+    
+    @property
+    def start(self):
+        return self._start()
+
+    @start.setter
+    def start(self, val):
+        newval = self.Eval(val)
+        if newval != self._start:
+            self._start = newval
+            self._touchAsset()
+
+    @property
+    def end(self):
+        return self._end()
+
+    @end.setter
+    def end(self, val):
+        newval = self.Eval(val)
+        if newval != self._end:
+            self._end = newval
+            self._touchAsset()
+        
+    def step(self):
+        self._touchAsset()
+
+    def physicalPointTouching(self, ppos):
+        return False
+        
+    def translate(self, pdisp):
+        pass
+
+
+class MathApp(App):
+    
+    _xscale = 200   # pixels per unit
+    _yscale = 200
+    _xcenter = 0    # center of screen in units
+    _ycenter = 0    
+    _mathVisualList = [] #
+    _mathDynamicList = []
+    _mathMovableList = []
+    _mathSelectableList = []
+    time = time()
+    
+    def __init__(self, scale=(_xscale, _yscale)):
+        super().__init__()
+        MathApp._xscale = scale[0]   # pixels per unit
+        MathApp._yscale = scale[1]
+        # register event callbacks
+        self.listenMouseEvent("click", self.handleMouseClick)
+        self.listenMouseEvent("mousedown", self.handleMouseDown)
+        self.listenMouseEvent("mouseup", self.handleMouseUp)
+        self.listenMouseEvent("mousemove", self.handleMouseMove)
+        self.listenMouseEvent("mousewheel", self.handleMouseWheel)
+        self.mouseDown = False
+        self.mouseCapturedObject = None
+        self.mouseX = self.mouseY = None
+        self._touchAllVisuals()
+        self.selectedObj = None
+
+    def step(self):
+        MathApp.time = time()
+        for spr in self._mathDynamicList:
+            spr.step()
+        
+    def _touchAllVisuals(self):
+        # touch all visual object assets to use scaling
+        for obj in self._mathVisualList:
+            obj._touchAsset()
+        
+
+    @classmethod
+    def logicalToPhysical(cls, lp):
+        xxform = lambda xvalue, xscale, xcenter, physwidth: int((xvalue-xcenter)*xscale + physwidth/2)
+        yxform = lambda yvalue, yscale, ycenter, physheight: int(physheight/2 - (yvalue-ycenter)*yscale)
+
+        try:
+            return (xxform(lp[0], cls._xscale, cls._xcenter, cls._win.width),
+                yxform(lp[1], cls._yscale, cls._ycenter, cls._win.height))
+        except AttributeError:
+            return lp
+            
+    @classmethod
+    def physicalToLogical(cls, pp):
+        xxform = lambda xvalue, xscale, xcenter, physwidth: (xvalue - physwidth/2)/xscale + xcenter
+        yxform = lambda yvalue, yscale, ycenter, physheight: (physheight/2 - yvalue)/yscale + ycenter
+
+        try:
+            return (xxform(pp[0], cls._xscale, cls._xcenter, cls._win.width),
+                yxform(pp[1], cls._yscale, cls._ycenter, cls._win.height))
+        except AttributeError:
+            return pp
+            
+    @classmethod
+    def translatePhysicalToLogical(cls, pp):
+        xxform = lambda xvalue, xscale: xvalue/xscale
+        yxform = lambda yvalue, yscale: -yvalue/yscale
+
+        try:
+            return (xxform(pp[0], cls._xscale), yxform(pp[1], cls._yscale))
+        except AttributeError:
+            return pp
+
+    def handleMouseClick(self, event):
+        found = False
+        for obj in self._mathSelectableList:
+            if obj.physicalPointTouching((event.x, event.y)):
+                found = True
+                if not obj.selected: 
+                    obj.select()
+                    self.selectedObj = obj
+        if not found and self.selectedObj:
+            self.selectedObj.unselect()
+            self.selectedObj = None
+
+    def handleMouseDown(self, event):
+        self.mouseDown = True
+        for obj in self._mathMovableList:
+            if obj.physicalPointTouching((event.x, event.y)):
+                self.mouseCapturedObject = obj
+                break
+
+    def handleMouseUp(self, event):
+        self.mouseDown = False
+        self.mouseCapturedObject = None
+
+    def handleMouseMove(self, event):
+        if not self.mouseX:
+            self.mouseX = event.x
+            self.mouseY = event.y
+        dx = event.x - self.mouseX
+        dy = event.y - self.mouseY
+        self.mouseX = event.x
+        self.mouseY = event.y
+        if self.mouseDown:
+            if self.mouseCapturedObject:
+                self.mouseCapturedObject.translate((dx, dy))
+            else:
+                lmove = self.translatePhysicalToLogical((dx, dy))
+                MathApp._xcenter -= lmove[0]
+                MathApp._ycenter -= lmove[1]
+                self._touchAllVisuals()
+                        
+
+    def handleMouseWheel(self, event):
+        pass
+     
+    @classmethod   
+    def distance(cls, pos1, pos2):
+        return sqrt((pos2[0]-pos1[0])**2 + (pos2[1]-pos1[1])**2)
+            
+    @classmethod
+    def _addVisual(cls, obj):
+        if isinstance(obj, _MathVisual):
+            cls._mathVisualList.append(obj)
+            
+    @classmethod
+    def _removeVisual(cls, obj):
+        if isinstance(obj, _MathVisual) and obj in cls._mathVisualList:
+            cls._mathVisualList.remove(obj)
+
+    @classmethod
+    def _addDynamic(cls, obj):
+        if isinstance(obj, _MathDynamic) and obj not in cls._mathDynamicList:
+            cls._mathDynamicList.append(obj)
+            
+    @classmethod
+    def _removeDynamic(cls, obj):
+        if isinstance(obj, _MathDynamic) and obj in cls._mathDynamicList:
+            cls._mathDynamicList.remove(obj)
+
+    @classmethod
+    def _addMovable(cls, obj):
+        if isinstance(obj, _MathVisual) and obj not in cls._mathMovableList:
+            cls._mathMovableList.append(obj)
+            
+    @classmethod
+    def _removeMovable(cls, obj):
+        if isinstance(obj, _MathVisual) and obj in cls._mathMovableList:
+            cls._mathMovableList.remove(obj)
+
+    @classmethod
+    def _addSelectable(cls, obj):
+        if isinstance(obj, _MathVisual) and obj not in cls._mathSelectableList:
+            cls._mathSelectableList.append(obj)
+            
+    @classmethod
+    def _removeSelectable(cls, obj):
+        if isinstance(obj, _MathVisual) and obj in cls._mathSelectableList:
+            cls._mathSelectableList.remove(obj)
+
+
+# test code here
+if __name__ == "__main__":
+    p1 = Point((0,0))
+    p1.movable = True
+    p2 = Point((2,0))
+    p2.movable = True
+    p3 = Point((3,0))
+    t = Timer()
+    p4 = Point(lambda :(3, (int(t.time*100) % 400)/100))
+    
+    
+    LineSegment(p1,p4)
+
+    l1 = Label((-4,2), lambda: "Elapsed Time: {0:.0}".format(t.time), size=20, width=400, positioning="logical")
+    i1 = InputNumeric((200,300), 99.9, size=20, positioning="physical")
+    l2 = Label((-4,1), lambda: "{0}".format(i1()), size=20)
+    b1 = InputButton((200,350), "RESET", lambda: t.reset(), size=20, positioning="physical")
+    
+    ap = MathApp((100,100))
+    ap.run()
+</code></pre>
+  </div>
+
+  </header>
+
+  <section id="section-items">
+
+
+    <h2 class="section-title" id="header-classes">Classes</h2>
+      
+      <div class="item">
+      <p id="ggmath.InputButton" class="name">class <span class="ident">InputButton</span></p>
+      
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.InputButton', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.InputButton" class="source">
+    <pre><code>class InputButton(Label):
+    
+    def __init__(self, pos, text, callback, positioning="logical", 
+            size=10, width=200, color=Color(0,1)):
+        self._callback = callback
+        super().__init__(pos, text, positioning=positioning,
+            size=size, width=width, color=color)
+        self.selectable = True
+
+    def select(self):
+        super().select()
+        self._callback()
+        self.unselect()
+
+    def unselect(self):
+        super().unselect()
+</code></pre>
+  </div>
+</div>
+
+
+      <div class="class">
+          <h3>Ancestors (in MRO)</h3>
+          <ul class="class_list">
+          <li><a href="#ggmath.InputButton">InputButton</a></li>
+          <li><a href="#ggmath.Label">Label</a></li>
+          <li>__pdoc_file_module__._MathVisual</li>
+          <li>ggame.Sprite</li>
+          <li>__pdoc_file_module__._MathDynamic</li>
+          <li>builtins.object</li>
+          </ul>
+          <h3>Static methods</h3>
+            
+  <div class="item">
+    <div class="name def" id="ggmath.InputButton.__init__">
+    <p>def <span class="ident">__init__</span>(</p><p>self, pos, text, callback, positioning=&#39;logical&#39;, size=10, width=200, color=&lt;ggame.Color object at 0x7f9fd4ff73d0&gt;)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.InputButton.__init__', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.InputButton.__init__" class="source">
+    <pre><code>def __init__(self, pos, text, callback, positioning="logical", 
+        size=10, width=200, color=Color(0,1)):
+    self._callback = callback
+    super().__init__(pos, text, positioning=positioning,
+        size=size, width=width, color=color)
+    self.selectable = True
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.InputButton.Eval">
+    <p>def <span class="ident">Eval</span>(</p><p>self, val)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.InputButton.Eval', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.InputButton.Eval" class="source">
+    <pre><code>def Eval(self, val):
+    if callable(val):
+        self._setDynamic() # dynamically defined .. must step
+        return val
+    else:
+        return lambda : val  
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.InputButton.circularCollisionModel">
+    <p>def <span class="ident">circularCollisionModel</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Calling the sprite's <code>ggame.Sprite.circularCollisionModel</code> method 
+will configure the sprite to use a simple circular collision model 
+when checking for overlap with other sprites. In this model, the
+"collideable" area of the sprite is regarded as a circle whose
+diameter is equal to the mean of the width and height of the 
+asset image.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.InputButton.circularCollisionModel', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.InputButton.circularCollisionModel" class="source">
+    <pre><code>def circularCollisionModel(self):
+    """
+    Calling the sprite's `ggame.Sprite.circularCollisionModel` method 
+    will configure the sprite to use a simple circular collision model 
+    when checking for overlap with other sprites. In this model, the
+    "collideable" area of the sprite is regarded as a circle whose
+    diameter is equal to the mean of the width and height of the 
+    asset image.
+    """
+    self._collisionStyle = type(self)._circCollision
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.InputButton.collidingWith">
+    <p>def <span class="ident">collidingWith</span>(</p><p>self, obj)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Return a boolean True if this sprite is currently overlapping the sprite 
+referenced by <code>obj</code>. Uses the collision model specified (rectangular, by 
+default). Collision/overlap decision is based purely on the overall, gross
+dimensions of the image rectangle. There is no attempt to verify that 
+non-transparent pixels in one sprite are actually overlapping visible
+pixels in another.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.InputButton.collidingWith', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.InputButton.collidingWith" class="source">
+    <pre><code>def collidingWith(self, obj):
+    """
+    Return a boolean True if this sprite is currently overlapping the sprite 
+    referenced by `obj`. Uses the collision model specified (rectangular, by 
+    default). Collision/overlap decision is based purely on the overall, gross
+    dimensions of the image rectangle. There is no attempt to verify that 
+    non-transparent pixels in one sprite are actually overlapping visible
+    pixels in another.
+    """
+    if self is obj:
+        return False
+    elif self._collisionStyle == obj._collisionStyle == type(self)._circCollision:
+        dist2 = (self.x - obj.x)**2 + (self.y - obj.y)**2
+        return dist2 < (self.radius + obj.radius)**2
+    else:
+        return (not (self.xmin > obj.xmax
+            or self.xmax < obj.xmin
+            or self.ymin > obj.ymax
+            or self.ymax < obj.ymin))
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.InputButton.collidingWithSprites">
+    <p>def <span class="ident">collidingWithSprites</span>(</p><p>self, sclass=None)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Return a list of sprite objects identified by the <code>sclass</code> parameter
+that are currently colliding with (that is, with which the <code>ggame.Sprite.collidingWith</code>
+method returns True) this sprite. If <code>sclass</code> is set to <code>None</code> (default), then
+all other sprites are checked for collision, otherwise, only sprites whose
+class matches <code>sclass</code> are checked.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.InputButton.collidingWithSprites', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.InputButton.collidingWithSprites" class="source">
+    <pre><code>def collidingWithSprites(self, sclass = None):
+    """
+    Return a list of sprite objects identified by the `sclass` parameter
+    that are currently colliding with (that is, with which the `ggame.Sprite.collidingWith`
+    method returns True) this sprite. If `sclass` is set to `None` (default), then
+    all other sprites are checked for collision, otherwise, only sprites whose
+    class matches `sclass` are checked.
+    """
+    if sclass is None:
+        slist = App.spritelist
+    else:
+        slist = App.getSpritesbyClass(sclass)
+    return list(filter(self.collidingWith, slist))
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.InputButton.destroy">
+    <p>def <span class="ident">destroy</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.InputButton.destroy', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.InputButton.destroy" class="source">
+    <pre><code>def destroy(self):
+    MathApp._removeVisual(self)
+    MathApp._removeMovable(self)
+    _MathDynamic.destroy(self)
+    Sprite.destroy(self)
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.InputButton.firstImage">
+    <p>def <span class="ident">firstImage</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Select and display the <em>first</em> image used by this sprite.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.InputButton.firstImage', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.InputButton.firstImage" class="source">
+    <pre><code>def firstImage(self):
+    """
+    Select and display the *first* image used by this sprite.
+    """
+    self.GFX.texture = self.asset[0]
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.InputButton.lastImage">
+    <p>def <span class="ident">lastImage</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Select and display the <em>last</em> image used by this sprite.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.InputButton.lastImage', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.InputButton.lastImage" class="source">
+    <pre><code>def lastImage(self):
+    """
+    Select and display the *last* image used by this sprite.
+    """
+    self.GFX.texture = self.asset[-1]
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.InputButton.nextImage">
+    <p>def <span class="ident">nextImage</span>(</p><p>self, wrap=False)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Select and display the <em>next</em> image used by this sprite.
+If the current image is already the <em>last</em> image, then
+the image is not advanced.</p>
+<p>If the optional <code>wrap</code> parameter is set to <code>True</code>, then calling
+<code>ggame.Sprite.nextImage</code> on the last image will cause the <em>first</em>
+image to be loaded.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.InputButton.nextImage', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.InputButton.nextImage" class="source">
+    <pre><code>def nextImage(self, wrap = False):
+    """
+    Select and display the *next* image used by this sprite.
+    If the current image is already the *last* image, then
+    the image is not advanced.
+    If the optional `wrap` parameter is set to `True`, then calling
+    `ggame.Sprite.nextImage` on the last image will cause the *first*
+    image to be loaded.
+    """
+    self._index += 1
+    if self._index >= len(self.asset):
+        if wrap:
+            self._index = 0
+        else:
+            self._index = len(self.asset)-1
+    self.GFX.texture = self.asset[self._index]
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.InputButton.physicalPointTouching">
+    <p>def <span class="ident">physicalPointTouching</span>(</p><p>self, ppos)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.InputButton.physicalPointTouching', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.InputButton.physicalPointTouching" class="source">
+    <pre><code>def physicalPointTouching(self, ppos):
+    return (ppos[0] >= self._ppos[0] and 
+        ppos[0] <= self._ppos[0] + self._width and
+        ppos[1] >= self._ppos[1] and 
+        ppos[1] <= self._ppos[1] + self._size)
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.InputButton.prevImage">
+    <p>def <span class="ident">prevImage</span>(</p><p>self, wrap=False)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Select and display the <em>previous</em> image used by this sprite.
+If the current image is already the <em>first</em> image, then
+the image is not changed.</p>
+<p>If the optional <code>wrap</code> parameter is set to <code>True</code>, then calling
+<code>ggame.Sprite.prevImage</code> on the first image will cause the <em>last</em>
+image to be loaded.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.InputButton.prevImage', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.InputButton.prevImage" class="source">
+    <pre><code>def prevImage(self, wrap = False):
+    """
+    Select and display the *previous* image used by this sprite.
+    If the current image is already the *first* image, then
+    the image is not changed.
+    If the optional `wrap` parameter is set to `True`, then calling
+    `ggame.Sprite.prevImage` on the first image will cause the *last*
+    image to be loaded.
+    """
+    self._index -= 1
+    if self._index < 0:
+        if wrap:
+            self._index = len(self.asset)-1
+        else:
+            self._index = 0
+    self.GFX.texture = self.asset[self._index]
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.InputButton.processEvent">
+    <p>def <span class="ident">processEvent</span>(</p><p>self, event)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.InputButton.processEvent', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.InputButton.processEvent" class="source">
+    <pre><code>def processEvent(self, event):
+    pass
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.InputButton.rectangularCollisionModel">
+    <p>def <span class="ident">rectangularCollisionModel</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Calling this method will configure the sprite to use a simple 
+rectangular collision model when checking for overlap with 
+other sprites. In this model, the "collideable" area of the sprite
+is equal to the rectangle of the asset image. If the sprite asset
+image includes a large transparent margin, this may cause the 
+collision box to be larger than desired.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.InputButton.rectangularCollisionModel', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.InputButton.rectangularCollisionModel" class="source">
+    <pre><code>def rectangularCollisionModel(self):
+    """
+    Calling this method will configure the sprite to use a simple 
+    rectangular collision model when checking for overlap with 
+    other sprites. In this model, the "collideable" area of the sprite
+    is equal to the rectangle of the asset image. If the sprite asset
+    image includes a large transparent margin, this may cause the 
+    collision box to be larger than desired.
+    """
+    self._collisionStyle = type(self)._rectCollision
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.InputButton.select">
+    <p>def <span class="ident">select</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.InputButton.select', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.InputButton.select" class="source">
+    <pre><code>def select(self):
+    super().select()
+    self._callback()
+    self.unselect()
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.InputButton.setImage">
+    <p>def <span class="ident">setImage</span>(</p><p>self, index=0)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Select the image to display by giving its <code>index</code>, where an index
+of zero represents the <em>first</em> image in the asset.</p>
+<p>This is equivalent to setting the <code>ggame.Sprite.index</code> property
+directly.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.InputButton.setImage', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.InputButton.setImage" class="source">
+    <pre><code>def setImage(self, index=0):
+    """
+    Select the image to display by giving its `index`, where an index
+    of zero represents the *first* image in the asset.
+    This is equivalent to setting the `ggame.Sprite.index` property
+    directly.
+    """
+    self.index = index
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.InputButton.step">
+    <p>def <span class="ident">step</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.InputButton.step', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.InputButton.step" class="source">
+    <pre><code>def step(self):
+    self._touchAsset()
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.InputButton.translate">
+    <p>def <span class="ident">translate</span>(</p><p>self, pdisp)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.InputButton.translate', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.InputButton.translate" class="source">
+    <pre><code>def translate(self, pdisp):
+    pass
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.InputButton.unselect">
+    <p>def <span class="ident">unselect</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.InputButton.unselect', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.InputButton.unselect" class="source">
+    <pre><code>def unselect(self):
+    super().unselect()
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+          <h3>Instance variables</h3>
+            <div class="item">
+            <p id="ggmath.InputButton.center" class="name">var <span class="ident">center</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This attribute represents the horizontal and vertical position of the 
+sprite "center" as a tuple of floating point numbers. See the 
+descriptions for <code>ggame.Sprite.fxcenter</code> and <code>ggame.Sprite.fycenter</code> for 
+more details.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.InputButton.fxcenter" class="name">var <span class="ident">fxcenter</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This represents the horizontal position of the sprite "center", as a floating
+point number between 0.0 and 1.0. A value of 0.0 means that the x-coordinate
+of the sprite refers to its left hand edge. A value of 1.0 refers to its 
+right hand edge. Any value in between may be specified. Values may be assigned
+to this attribute.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.InputButton.fycenter" class="name">var <span class="ident">fycenter</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This represents the vertical position of the sprite "center", as a floating
+point number between 0.0 and 1.0. A value of 0.0 means that the x-coordinate
+of the sprite refers to its top edge. A value of 1.0 refers to its 
+bottom edge. Any value in between may be specified. Values may be assigned
+to this attribute.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.InputButton.height" class="name">var <span class="ident">height</span></p>
+            
+    <p class="inheritance">
+     <strong>Inheritance:</strong>
+       <code><a href="#ggmath.Label">Label</a></code>.<code><a href="#ggmath.Label.height">height</a></code>
+    </p>
+
+            
+  
+    <div class="desc inherited"><p>This is an integer representing the display height of the sprite.
+Assigning a value to the height will scale the image vertically.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.InputButton.index" class="name">var <span class="ident">index</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This is an integer index in to the list of images available for this sprite.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.InputButton.movable" class="name">var <span class="ident">movable</span></p>
+            
+
+            
+  
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.InputButton.position" class="name">var <span class="ident">position</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This represents the (x,y) coordinates of the sprite on the screen. Assigning
+a value to this attribute will move the sprite to the new coordinates.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.InputButton.rotation" class="name">var <span class="ident">rotation</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This attribute may be used to change the rotation of the sprite on the screen.
+Value may be a floating point number. A value of 0.0 means no rotation. A value 
+of 1.0 means  a rotation of 1 radian in a counter-clockwise direction. One radian
+is 180/pi or approximately 57.3 degrees.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.InputButton.scale" class="name">var <span class="ident">scale</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This attribute may be used to change the size of the sprite ('scale' it) on the 
+screen. Value may be a floating point number. A value of 1.0 means that the sprite
+image will keep its original size. A value of 2.0 would double it, etc.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.InputButton.selectable" class="name">var <span class="ident">selectable</span></p>
+            
+
+            
+  
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.InputButton.visible" class="name">var <span class="ident">visible</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This boolean attribute may be used to change the visibility of the sprite. Setting
+<code>ggame.Sprite.visible</code> to <code>False</code> will prevent the sprite from rendering on the 
+screen.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.InputButton.width" class="name">var <span class="ident">width</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This is an integer representing the display width of the sprite.
+Assigning a value to the width will scale the image horizontally.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.InputButton.x" class="name">var <span class="ident">x</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This represents the x-coordinate of the sprite on the screen. Assigning
+a value to this attribute will move the sprite horizontally.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.InputButton.y" class="name">var <span class="ident">y</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This represents the y-coordinate of the sprite on the screen. Assigning
+a value to this attribute will move the sprite vertically.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+      </div>
+      </div>
+      
+      <div class="item">
+      <p id="ggmath.InputNumeric" class="name">class <span class="ident">InputNumeric</span></p>
+      
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.InputNumeric', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.InputNumeric" class="source">
+    <pre><code>class InputNumeric(Label):
+
+    def __init__(self, pos, val, fmt="{0.2}", positioning="logical", size=10, 
+            width=200, color=Color(0,1)):
+        self._fmt = fmt
+        self._val = self.Eval(val)()  # initialize to simple numeric
+        self._savedval = self._val
+        self._updateText()
+        super().__init__(pos, self._text, positioning=positioning, 
+            size=size, width=width, color=color)
+        self.selectable = True
+
+    def _updateText(self):
+        self._text = self.Eval(self._fmt.format(self._val))
+
+    def processEvent(self, event):
+        if event.key in "0123456789insertdelete":
+            key = event.key
+            if event.key == 'insert':
+                key = '-'
+            elif event.key == 'delete':
+                key = '.'
+            if self._text() == "0":
+                self._text = self.Eval("")
+            self._text = self.Eval(self._text() + key)
+            self._touchAsset()
+        elif event.key in ['enter','escape']:
+            if event.key == 'enter':
+                try:
+                    self._val = float(self._text())
+                except ValueError:
+                    self._val = self._savedval
+                self._savedval = self._val
+            self.unselect()
+            
+
+    def select(self):
+        super().select()
+        self._savedval = self._val
+        self._val = 0
+        self._updateText()
+        self._touchAsset()
+        MathApp.listenKeyEvent("keypress", "*", self.processEvent)
+
+    def unselect(self):
+        super().unselect()
+        self._val = self._savedval
+        self._updateText()
+        self._touchAsset()
+        try:
+            MathApp.unlistenKeyEvent("keypress", "*", self.processEvent)
+        except ValueError:
+            pass
+
+    def __call__(self):
+        return self._val
+</code></pre>
+  </div>
+</div>
+
+
+      <div class="class">
+          <h3>Ancestors (in MRO)</h3>
+          <ul class="class_list">
+          <li><a href="#ggmath.InputNumeric">InputNumeric</a></li>
+          <li><a href="#ggmath.Label">Label</a></li>
+          <li>__pdoc_file_module__._MathVisual</li>
+          <li>ggame.Sprite</li>
+          <li>__pdoc_file_module__._MathDynamic</li>
+          <li>builtins.object</li>
+          </ul>
+          <h3>Static methods</h3>
+            
+  <div class="item">
+    <div class="name def" id="ggmath.InputNumeric.__init__">
+    <p>def <span class="ident">__init__</span>(</p><p>self, pos, val, fmt=&#39;{0.2}&#39;, positioning=&#39;logical&#39;, size=10, width=200, color=&lt;ggame.Color object at 0x7f9fd4ff7690&gt;)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.InputNumeric.__init__', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.InputNumeric.__init__" class="source">
+    <pre><code>def __init__(self, pos, val, fmt="{0.2}", positioning="logical", size=10, 
+        width=200, color=Color(0,1)):
+    self._fmt = fmt
+    self._val = self.Eval(val)()  # initialize to simple numeric
+    self._savedval = self._val
+    self._updateText()
+    super().__init__(pos, self._text, positioning=positioning, 
+        size=size, width=width, color=color)
+    self.selectable = True
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.InputNumeric.Eval">
+    <p>def <span class="ident">Eval</span>(</p><p>self, val)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.InputNumeric.Eval', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.InputNumeric.Eval" class="source">
+    <pre><code>def Eval(self, val):
+    if callable(val):
+        self._setDynamic() # dynamically defined .. must step
+        return val
+    else:
+        return lambda : val  
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.InputNumeric.circularCollisionModel">
+    <p>def <span class="ident">circularCollisionModel</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Calling the sprite's <code>ggame.Sprite.circularCollisionModel</code> method 
+will configure the sprite to use a simple circular collision model 
+when checking for overlap with other sprites. In this model, the
+"collideable" area of the sprite is regarded as a circle whose
+diameter is equal to the mean of the width and height of the 
+asset image.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.InputNumeric.circularCollisionModel', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.InputNumeric.circularCollisionModel" class="source">
+    <pre><code>def circularCollisionModel(self):
+    """
+    Calling the sprite's `ggame.Sprite.circularCollisionModel` method 
+    will configure the sprite to use a simple circular collision model 
+    when checking for overlap with other sprites. In this model, the
+    "collideable" area of the sprite is regarded as a circle whose
+    diameter is equal to the mean of the width and height of the 
+    asset image.
+    """
+    self._collisionStyle = type(self)._circCollision
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.InputNumeric.collidingWith">
+    <p>def <span class="ident">collidingWith</span>(</p><p>self, obj)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Return a boolean True if this sprite is currently overlapping the sprite 
+referenced by <code>obj</code>. Uses the collision model specified (rectangular, by 
+default). Collision/overlap decision is based purely on the overall, gross
+dimensions of the image rectangle. There is no attempt to verify that 
+non-transparent pixels in one sprite are actually overlapping visible
+pixels in another.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.InputNumeric.collidingWith', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.InputNumeric.collidingWith" class="source">
+    <pre><code>def collidingWith(self, obj):
+    """
+    Return a boolean True if this sprite is currently overlapping the sprite 
+    referenced by `obj`. Uses the collision model specified (rectangular, by 
+    default). Collision/overlap decision is based purely on the overall, gross
+    dimensions of the image rectangle. There is no attempt to verify that 
+    non-transparent pixels in one sprite are actually overlapping visible
+    pixels in another.
+    """
+    if self is obj:
+        return False
+    elif self._collisionStyle == obj._collisionStyle == type(self)._circCollision:
+        dist2 = (self.x - obj.x)**2 + (self.y - obj.y)**2
+        return dist2 < (self.radius + obj.radius)**2
+    else:
+        return (not (self.xmin > obj.xmax
+            or self.xmax < obj.xmin
+            or self.ymin > obj.ymax
+            or self.ymax < obj.ymin))
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.InputNumeric.collidingWithSprites">
+    <p>def <span class="ident">collidingWithSprites</span>(</p><p>self, sclass=None)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Return a list of sprite objects identified by the <code>sclass</code> parameter
+that are currently colliding with (that is, with which the <code>ggame.Sprite.collidingWith</code>
+method returns True) this sprite. If <code>sclass</code> is set to <code>None</code> (default), then
+all other sprites are checked for collision, otherwise, only sprites whose
+class matches <code>sclass</code> are checked.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.InputNumeric.collidingWithSprites', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.InputNumeric.collidingWithSprites" class="source">
+    <pre><code>def collidingWithSprites(self, sclass = None):
+    """
+    Return a list of sprite objects identified by the `sclass` parameter
+    that are currently colliding with (that is, with which the `ggame.Sprite.collidingWith`
+    method returns True) this sprite. If `sclass` is set to `None` (default), then
+    all other sprites are checked for collision, otherwise, only sprites whose
+    class matches `sclass` are checked.
+    """
+    if sclass is None:
+        slist = App.spritelist
+    else:
+        slist = App.getSpritesbyClass(sclass)
+    return list(filter(self.collidingWith, slist))
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.InputNumeric.destroy">
+    <p>def <span class="ident">destroy</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.InputNumeric.destroy', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.InputNumeric.destroy" class="source">
+    <pre><code>def destroy(self):
+    MathApp._removeVisual(self)
+    MathApp._removeMovable(self)
+    _MathDynamic.destroy(self)
+    Sprite.destroy(self)
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.InputNumeric.firstImage">
+    <p>def <span class="ident">firstImage</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Select and display the <em>first</em> image used by this sprite.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.InputNumeric.firstImage', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.InputNumeric.firstImage" class="source">
+    <pre><code>def firstImage(self):
+    """
+    Select and display the *first* image used by this sprite.
+    """
+    self.GFX.texture = self.asset[0]
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.InputNumeric.lastImage">
+    <p>def <span class="ident">lastImage</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Select and display the <em>last</em> image used by this sprite.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.InputNumeric.lastImage', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.InputNumeric.lastImage" class="source">
+    <pre><code>def lastImage(self):
+    """
+    Select and display the *last* image used by this sprite.
+    """
+    self.GFX.texture = self.asset[-1]
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.InputNumeric.nextImage">
+    <p>def <span class="ident">nextImage</span>(</p><p>self, wrap=False)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Select and display the <em>next</em> image used by this sprite.
+If the current image is already the <em>last</em> image, then
+the image is not advanced.</p>
+<p>If the optional <code>wrap</code> parameter is set to <code>True</code>, then calling
+<code>ggame.Sprite.nextImage</code> on the last image will cause the <em>first</em>
+image to be loaded.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.InputNumeric.nextImage', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.InputNumeric.nextImage" class="source">
+    <pre><code>def nextImage(self, wrap = False):
+    """
+    Select and display the *next* image used by this sprite.
+    If the current image is already the *last* image, then
+    the image is not advanced.
+    If the optional `wrap` parameter is set to `True`, then calling
+    `ggame.Sprite.nextImage` on the last image will cause the *first*
+    image to be loaded.
+    """
+    self._index += 1
+    if self._index >= len(self.asset):
+        if wrap:
+            self._index = 0
+        else:
+            self._index = len(self.asset)-1
+    self.GFX.texture = self.asset[self._index]
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.InputNumeric.physicalPointTouching">
+    <p>def <span class="ident">physicalPointTouching</span>(</p><p>self, ppos)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.InputNumeric.physicalPointTouching', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.InputNumeric.physicalPointTouching" class="source">
+    <pre><code>def physicalPointTouching(self, ppos):
+    return (ppos[0] >= self._ppos[0] and 
+        ppos[0] <= self._ppos[0] + self._width and
+        ppos[1] >= self._ppos[1] and 
+        ppos[1] <= self._ppos[1] + self._size)
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.InputNumeric.prevImage">
+    <p>def <span class="ident">prevImage</span>(</p><p>self, wrap=False)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Select and display the <em>previous</em> image used by this sprite.
+If the current image is already the <em>first</em> image, then
+the image is not changed.</p>
+<p>If the optional <code>wrap</code> parameter is set to <code>True</code>, then calling
+<code>ggame.Sprite.prevImage</code> on the first image will cause the <em>last</em>
+image to be loaded.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.InputNumeric.prevImage', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.InputNumeric.prevImage" class="source">
+    <pre><code>def prevImage(self, wrap = False):
+    """
+    Select and display the *previous* image used by this sprite.
+    If the current image is already the *first* image, then
+    the image is not changed.
+    If the optional `wrap` parameter is set to `True`, then calling
+    `ggame.Sprite.prevImage` on the first image will cause the *last*
+    image to be loaded.
+    """
+    self._index -= 1
+    if self._index < 0:
+        if wrap:
+            self._index = len(self.asset)-1
+        else:
+            self._index = 0
+    self.GFX.texture = self.asset[self._index]
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.InputNumeric.processEvent">
+    <p>def <span class="ident">processEvent</span>(</p><p>self, event)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.InputNumeric.processEvent', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.InputNumeric.processEvent" class="source">
+    <pre><code>def processEvent(self, event):
+    if event.key in "0123456789insertdelete":
+        key = event.key
+        if event.key == 'insert':
+            key = '-'
+        elif event.key == 'delete':
+            key = '.'
+        if self._text() == "0":
+            self._text = self.Eval("")
+        self._text = self.Eval(self._text() + key)
+        self._touchAsset()
+    elif event.key in ['enter','escape']:
+        if event.key == 'enter':
+            try:
+                self._val = float(self._text())
+            except ValueError:
+                self._val = self._savedval
+            self._savedval = self._val
+        self.unselect()
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.InputNumeric.rectangularCollisionModel">
+    <p>def <span class="ident">rectangularCollisionModel</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Calling this method will configure the sprite to use a simple 
+rectangular collision model when checking for overlap with 
+other sprites. In this model, the "collideable" area of the sprite
+is equal to the rectangle of the asset image. If the sprite asset
+image includes a large transparent margin, this may cause the 
+collision box to be larger than desired.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.InputNumeric.rectangularCollisionModel', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.InputNumeric.rectangularCollisionModel" class="source">
+    <pre><code>def rectangularCollisionModel(self):
+    """
+    Calling this method will configure the sprite to use a simple 
+    rectangular collision model when checking for overlap with 
+    other sprites. In this model, the "collideable" area of the sprite
+    is equal to the rectangle of the asset image. If the sprite asset
+    image includes a large transparent margin, this may cause the 
+    collision box to be larger than desired.
+    """
+    self._collisionStyle = type(self)._rectCollision
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.InputNumeric.select">
+    <p>def <span class="ident">select</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.InputNumeric.select', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.InputNumeric.select" class="source">
+    <pre><code>def select(self):
+    super().select()
+    self._savedval = self._val
+    self._val = 0
+    self._updateText()
+    self._touchAsset()
+    MathApp.listenKeyEvent("keypress", "*", self.processEvent)
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.InputNumeric.setImage">
+    <p>def <span class="ident">setImage</span>(</p><p>self, index=0)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Select the image to display by giving its <code>index</code>, where an index
+of zero represents the <em>first</em> image in the asset.</p>
+<p>This is equivalent to setting the <code>ggame.Sprite.index</code> property
+directly.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.InputNumeric.setImage', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.InputNumeric.setImage" class="source">
+    <pre><code>def setImage(self, index=0):
+    """
+    Select the image to display by giving its `index`, where an index
+    of zero represents the *first* image in the asset.
+    This is equivalent to setting the `ggame.Sprite.index` property
+    directly.
+    """
+    self.index = index
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.InputNumeric.step">
+    <p>def <span class="ident">step</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.InputNumeric.step', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.InputNumeric.step" class="source">
+    <pre><code>def step(self):
+    self._touchAsset()
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.InputNumeric.translate">
+    <p>def <span class="ident">translate</span>(</p><p>self, pdisp)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.InputNumeric.translate', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.InputNumeric.translate" class="source">
+    <pre><code>def translate(self, pdisp):
+    pass
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.InputNumeric.unselect">
+    <p>def <span class="ident">unselect</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.InputNumeric.unselect', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.InputNumeric.unselect" class="source">
+    <pre><code>def unselect(self):
+    super().unselect()
+    self._val = self._savedval
+    self._updateText()
+    self._touchAsset()
+    try:
+        MathApp.unlistenKeyEvent("keypress", "*", self.processEvent)
+    except ValueError:
+        pass
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+          <h3>Instance variables</h3>
+            <div class="item">
+            <p id="ggmath.InputNumeric.center" class="name">var <span class="ident">center</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This attribute represents the horizontal and vertical position of the 
+sprite "center" as a tuple of floating point numbers. See the 
+descriptions for <code>ggame.Sprite.fxcenter</code> and <code>ggame.Sprite.fycenter</code> for 
+more details.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.InputNumeric.fxcenter" class="name">var <span class="ident">fxcenter</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This represents the horizontal position of the sprite "center", as a floating
+point number between 0.0 and 1.0. A value of 0.0 means that the x-coordinate
+of the sprite refers to its left hand edge. A value of 1.0 refers to its 
+right hand edge. Any value in between may be specified. Values may be assigned
+to this attribute.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.InputNumeric.fycenter" class="name">var <span class="ident">fycenter</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This represents the vertical position of the sprite "center", as a floating
+point number between 0.0 and 1.0. A value of 0.0 means that the x-coordinate
+of the sprite refers to its top edge. A value of 1.0 refers to its 
+bottom edge. Any value in between may be specified. Values may be assigned
+to this attribute.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.InputNumeric.height" class="name">var <span class="ident">height</span></p>
+            
+    <p class="inheritance">
+     <strong>Inheritance:</strong>
+       <code><a href="#ggmath.Label">Label</a></code>.<code><a href="#ggmath.Label.height">height</a></code>
+    </p>
+
+            
+  
+    <div class="desc inherited"><p>This is an integer representing the display height of the sprite.
+Assigning a value to the height will scale the image vertically.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.InputNumeric.index" class="name">var <span class="ident">index</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This is an integer index in to the list of images available for this sprite.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.InputNumeric.movable" class="name">var <span class="ident">movable</span></p>
+            
+
+            
+  
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.InputNumeric.position" class="name">var <span class="ident">position</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This represents the (x,y) coordinates of the sprite on the screen. Assigning
+a value to this attribute will move the sprite to the new coordinates.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.InputNumeric.rotation" class="name">var <span class="ident">rotation</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This attribute may be used to change the rotation of the sprite on the screen.
+Value may be a floating point number. A value of 0.0 means no rotation. A value 
+of 1.0 means  a rotation of 1 radian in a counter-clockwise direction. One radian
+is 180/pi or approximately 57.3 degrees.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.InputNumeric.scale" class="name">var <span class="ident">scale</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This attribute may be used to change the size of the sprite ('scale' it) on the 
+screen. Value may be a floating point number. A value of 1.0 means that the sprite
+image will keep its original size. A value of 2.0 would double it, etc.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.InputNumeric.selectable" class="name">var <span class="ident">selectable</span></p>
+            
+
+            
+  
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.InputNumeric.visible" class="name">var <span class="ident">visible</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This boolean attribute may be used to change the visibility of the sprite. Setting
+<code>ggame.Sprite.visible</code> to <code>False</code> will prevent the sprite from rendering on the 
+screen.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.InputNumeric.width" class="name">var <span class="ident">width</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This is an integer representing the display width of the sprite.
+Assigning a value to the width will scale the image horizontally.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.InputNumeric.x" class="name">var <span class="ident">x</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This represents the x-coordinate of the sprite on the screen. Assigning
+a value to this attribute will move the sprite horizontally.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.InputNumeric.y" class="name">var <span class="ident">y</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This represents the y-coordinate of the sprite on the screen. Assigning
+a value to this attribute will move the sprite vertically.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+      </div>
+      </div>
+      
+      <div class="item">
+      <p id="ggmath.Label" class="name">class <span class="ident">Label</span></p>
+      
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.Label', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.Label" class="source">
+    <pre><code>class Label(_MathVisual):
+    
+    def __init__(self, pos, text, positioning="logical", size=10, width=200, color=Color(0,1)):
+        self._text = self.Eval(text) # create a *callable* text value function
+        self._ptext = self._text()
+        self._pos = self.Eval(pos)
+        self._positioning = positioning
+        self._size = size
+        self._width = width
+        self._color = color
+        if self._positioning == "physical":
+            self._ppos = self._pos()
+        else:
+            self._ppos = MathApp.logicalToPhysical(self._pos())
+            
+        super().__init__(TextAsset(self._ptext, 
+                style="{0}px Arial".format(self._size), 
+                width=self._width,
+                color=self._color), 
+            self._ppos)
+
+    def _newAsset(self, pos, text, size, width, color):    
+        if self._positioning != "physical":
+            ppos = MathApp.logicalToPhysical(pos())
+        else:
+            ppos = pos()
+        text = text()
+        if ppos != self._ppos or text != self._ptext:
+            self._ppos = ppos
+            self._ptext = text
+            self._updateAsset(TextAsset(text, 
+                style="{0}px Arial".format(size),
+                width=width,
+                color=color))
+            self.position = ppos
+        
+    def __call__(self):
+        return self._text()
+
+    def _touchAsset(self):
+        self._newAsset(self._pos, self._text, self._size, self._width, self._color)
+
+    def step(self):
+        self._touchAsset()
+    
+    def physicalPointTouching(self, ppos):
+        return (ppos[0] >= self._ppos[0] and 
+            ppos[0] <= self._ppos[0] + self._width and
+            ppos[1] >= self._ppos[1] and 
+            ppos[1] <= self._ppos[1] + self._size)
+
+    def translate(self, pdisp):
+        pass
+</code></pre>
+  </div>
+</div>
+
+
+      <div class="class">
+          <h3>Ancestors (in MRO)</h3>
+          <ul class="class_list">
+          <li><a href="#ggmath.Label">Label</a></li>
+          <li>__pdoc_file_module__._MathVisual</li>
+          <li>ggame.Sprite</li>
+          <li>__pdoc_file_module__._MathDynamic</li>
+          <li>builtins.object</li>
+          </ul>
+          <h3>Static methods</h3>
+            
+  <div class="item">
+    <div class="name def" id="ggmath.Label.__init__">
+    <p>def <span class="ident">__init__</span>(</p><p>self, pos, text, positioning=&#39;logical&#39;, size=10, width=200, color=&lt;ggame.Color object at 0x7f9fd4ff7190&gt;)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.Label.__init__', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.Label.__init__" class="source">
+    <pre><code>def __init__(self, pos, text, positioning="logical", size=10, width=200, color=Color(0,1)):
+    self._text = self.Eval(text) # create a *callable* text value function
+    self._ptext = self._text()
+    self._pos = self.Eval(pos)
+    self._positioning = positioning
+    self._size = size
+    self._width = width
+    self._color = color
+    if self._positioning == "physical":
+        self._ppos = self._pos()
+    else:
+        self._ppos = MathApp.logicalToPhysical(self._pos())
+        
+    super().__init__(TextAsset(self._ptext, 
+            style="{0}px Arial".format(self._size), 
+            width=self._width,
+            color=self._color), 
+        self._ppos)
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.Label.Eval">
+    <p>def <span class="ident">Eval</span>(</p><p>self, val)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.Label.Eval', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.Label.Eval" class="source">
+    <pre><code>def Eval(self, val):
+    if callable(val):
+        self._setDynamic() # dynamically defined .. must step
+        return val
+    else:
+        return lambda : val  
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.Label.circularCollisionModel">
+    <p>def <span class="ident">circularCollisionModel</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Calling the sprite's <code>ggame.Sprite.circularCollisionModel</code> method 
+will configure the sprite to use a simple circular collision model 
+when checking for overlap with other sprites. In this model, the
+"collideable" area of the sprite is regarded as a circle whose
+diameter is equal to the mean of the width and height of the 
+asset image.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.Label.circularCollisionModel', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.Label.circularCollisionModel" class="source">
+    <pre><code>def circularCollisionModel(self):
+    """
+    Calling the sprite's `ggame.Sprite.circularCollisionModel` method 
+    will configure the sprite to use a simple circular collision model 
+    when checking for overlap with other sprites. In this model, the
+    "collideable" area of the sprite is regarded as a circle whose
+    diameter is equal to the mean of the width and height of the 
+    asset image.
+    """
+    self._collisionStyle = type(self)._circCollision
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.Label.collidingWith">
+    <p>def <span class="ident">collidingWith</span>(</p><p>self, obj)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Return a boolean True if this sprite is currently overlapping the sprite 
+referenced by <code>obj</code>. Uses the collision model specified (rectangular, by 
+default). Collision/overlap decision is based purely on the overall, gross
+dimensions of the image rectangle. There is no attempt to verify that 
+non-transparent pixels in one sprite are actually overlapping visible
+pixels in another.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.Label.collidingWith', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.Label.collidingWith" class="source">
+    <pre><code>def collidingWith(self, obj):
+    """
+    Return a boolean True if this sprite is currently overlapping the sprite 
+    referenced by `obj`. Uses the collision model specified (rectangular, by 
+    default). Collision/overlap decision is based purely on the overall, gross
+    dimensions of the image rectangle. There is no attempt to verify that 
+    non-transparent pixels in one sprite are actually overlapping visible
+    pixels in another.
+    """
+    if self is obj:
+        return False
+    elif self._collisionStyle == obj._collisionStyle == type(self)._circCollision:
+        dist2 = (self.x - obj.x)**2 + (self.y - obj.y)**2
+        return dist2 < (self.radius + obj.radius)**2
+    else:
+        return (not (self.xmin > obj.xmax
+            or self.xmax < obj.xmin
+            or self.ymin > obj.ymax
+            or self.ymax < obj.ymin))
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.Label.collidingWithSprites">
+    <p>def <span class="ident">collidingWithSprites</span>(</p><p>self, sclass=None)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Return a list of sprite objects identified by the <code>sclass</code> parameter
+that are currently colliding with (that is, with which the <code>ggame.Sprite.collidingWith</code>
+method returns True) this sprite. If <code>sclass</code> is set to <code>None</code> (default), then
+all other sprites are checked for collision, otherwise, only sprites whose
+class matches <code>sclass</code> are checked.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.Label.collidingWithSprites', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.Label.collidingWithSprites" class="source">
+    <pre><code>def collidingWithSprites(self, sclass = None):
+    """
+    Return a list of sprite objects identified by the `sclass` parameter
+    that are currently colliding with (that is, with which the `ggame.Sprite.collidingWith`
+    method returns True) this sprite. If `sclass` is set to `None` (default), then
+    all other sprites are checked for collision, otherwise, only sprites whose
+    class matches `sclass` are checked.
+    """
+    if sclass is None:
+        slist = App.spritelist
+    else:
+        slist = App.getSpritesbyClass(sclass)
+    return list(filter(self.collidingWith, slist))
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.Label.destroy">
+    <p>def <span class="ident">destroy</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.Label.destroy', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.Label.destroy" class="source">
+    <pre><code>def destroy(self):
+    MathApp._removeVisual(self)
+    MathApp._removeMovable(self)
+    _MathDynamic.destroy(self)
+    Sprite.destroy(self)
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.Label.firstImage">
+    <p>def <span class="ident">firstImage</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Select and display the <em>first</em> image used by this sprite.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.Label.firstImage', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.Label.firstImage" class="source">
+    <pre><code>def firstImage(self):
+    """
+    Select and display the *first* image used by this sprite.
+    """
+    self.GFX.texture = self.asset[0]
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.Label.lastImage">
+    <p>def <span class="ident">lastImage</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Select and display the <em>last</em> image used by this sprite.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.Label.lastImage', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.Label.lastImage" class="source">
+    <pre><code>def lastImage(self):
+    """
+    Select and display the *last* image used by this sprite.
+    """
+    self.GFX.texture = self.asset[-1]
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.Label.nextImage">
+    <p>def <span class="ident">nextImage</span>(</p><p>self, wrap=False)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Select and display the <em>next</em> image used by this sprite.
+If the current image is already the <em>last</em> image, then
+the image is not advanced.</p>
+<p>If the optional <code>wrap</code> parameter is set to <code>True</code>, then calling
+<code>ggame.Sprite.nextImage</code> on the last image will cause the <em>first</em>
+image to be loaded.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.Label.nextImage', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.Label.nextImage" class="source">
+    <pre><code>def nextImage(self, wrap = False):
+    """
+    Select and display the *next* image used by this sprite.
+    If the current image is already the *last* image, then
+    the image is not advanced.
+    If the optional `wrap` parameter is set to `True`, then calling
+    `ggame.Sprite.nextImage` on the last image will cause the *first*
+    image to be loaded.
+    """
+    self._index += 1
+    if self._index >= len(self.asset):
+        if wrap:
+            self._index = 0
+        else:
+            self._index = len(self.asset)-1
+    self.GFX.texture = self.asset[self._index]
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.Label.physicalPointTouching">
+    <p>def <span class="ident">physicalPointTouching</span>(</p><p>self, ppos)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.Label.physicalPointTouching', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.Label.physicalPointTouching" class="source">
+    <pre><code>def physicalPointTouching(self, ppos):
+    return (ppos[0] >= self._ppos[0] and 
+        ppos[0] <= self._ppos[0] + self._width and
+        ppos[1] >= self._ppos[1] and 
+        ppos[1] <= self._ppos[1] + self._size)
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.Label.prevImage">
+    <p>def <span class="ident">prevImage</span>(</p><p>self, wrap=False)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Select and display the <em>previous</em> image used by this sprite.
+If the current image is already the <em>first</em> image, then
+the image is not changed.</p>
+<p>If the optional <code>wrap</code> parameter is set to <code>True</code>, then calling
+<code>ggame.Sprite.prevImage</code> on the first image will cause the <em>last</em>
+image to be loaded.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.Label.prevImage', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.Label.prevImage" class="source">
+    <pre><code>def prevImage(self, wrap = False):
+    """
+    Select and display the *previous* image used by this sprite.
+    If the current image is already the *first* image, then
+    the image is not changed.
+    If the optional `wrap` parameter is set to `True`, then calling
+    `ggame.Sprite.prevImage` on the first image will cause the *last*
+    image to be loaded.
+    """
+    self._index -= 1
+    if self._index < 0:
+        if wrap:
+            self._index = len(self.asset)-1
+        else:
+            self._index = 0
+    self.GFX.texture = self.asset[self._index]
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.Label.processEvent">
+    <p>def <span class="ident">processEvent</span>(</p><p>self, event)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.Label.processEvent', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.Label.processEvent" class="source">
+    <pre><code>def processEvent(self, event):
+    pass
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.Label.rectangularCollisionModel">
+    <p>def <span class="ident">rectangularCollisionModel</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Calling this method will configure the sprite to use a simple 
+rectangular collision model when checking for overlap with 
+other sprites. In this model, the "collideable" area of the sprite
+is equal to the rectangle of the asset image. If the sprite asset
+image includes a large transparent margin, this may cause the 
+collision box to be larger than desired.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.Label.rectangularCollisionModel', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.Label.rectangularCollisionModel" class="source">
+    <pre><code>def rectangularCollisionModel(self):
+    """
+    Calling this method will configure the sprite to use a simple 
+    rectangular collision model when checking for overlap with 
+    other sprites. In this model, the "collideable" area of the sprite
+    is equal to the rectangle of the asset image. If the sprite asset
+    image includes a large transparent margin, this may cause the 
+    collision box to be larger than desired.
+    """
+    self._collisionStyle = type(self)._rectCollision
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.Label.select">
+    <p>def <span class="ident">select</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.Label.select', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.Label.select" class="source">
+    <pre><code>def select(self):
+    self.selected = True
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.Label.setImage">
+    <p>def <span class="ident">setImage</span>(</p><p>self, index=0)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Select the image to display by giving its <code>index</code>, where an index
+of zero represents the <em>first</em> image in the asset.</p>
+<p>This is equivalent to setting the <code>ggame.Sprite.index</code> property
+directly.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.Label.setImage', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.Label.setImage" class="source">
+    <pre><code>def setImage(self, index=0):
+    """
+    Select the image to display by giving its `index`, where an index
+    of zero represents the *first* image in the asset.
+    This is equivalent to setting the `ggame.Sprite.index` property
+    directly.
+    """
+    self.index = index
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.Label.step">
+    <p>def <span class="ident">step</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.Label.step', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.Label.step" class="source">
+    <pre><code>def step(self):
+    self._touchAsset()
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.Label.translate">
+    <p>def <span class="ident">translate</span>(</p><p>self, pdisp)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.Label.translate', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.Label.translate" class="source">
+    <pre><code>def translate(self, pdisp):
+    pass
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.Label.unselect">
+    <p>def <span class="ident">unselect</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.Label.unselect', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.Label.unselect" class="source">
+    <pre><code>def unselect(self):
+    self.selected = False
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+          <h3>Instance variables</h3>
+            <div class="item">
+            <p id="ggmath.Label.center" class="name">var <span class="ident">center</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This attribute represents the horizontal and vertical position of the 
+sprite "center" as a tuple of floating point numbers. See the 
+descriptions for <code>ggame.Sprite.fxcenter</code> and <code>ggame.Sprite.fycenter</code> for 
+more details.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.Label.fxcenter" class="name">var <span class="ident">fxcenter</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This represents the horizontal position of the sprite "center", as a floating
+point number between 0.0 and 1.0. A value of 0.0 means that the x-coordinate
+of the sprite refers to its left hand edge. A value of 1.0 refers to its 
+right hand edge. Any value in between may be specified. Values may be assigned
+to this attribute.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.Label.fycenter" class="name">var <span class="ident">fycenter</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This represents the vertical position of the sprite "center", as a floating
+point number between 0.0 and 1.0. A value of 0.0 means that the x-coordinate
+of the sprite refers to its top edge. A value of 1.0 refers to its 
+bottom edge. Any value in between may be specified. Values may be assigned
+to this attribute.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.Label.height" class="name">var <span class="ident">height</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This is an integer representing the display height of the sprite.
+Assigning a value to the height will scale the image vertically.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.Label.index" class="name">var <span class="ident">index</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This is an integer index in to the list of images available for this sprite.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.Label.movable" class="name">var <span class="ident">movable</span></p>
+            
+
+            
+  
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.Label.position" class="name">var <span class="ident">position</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This represents the (x,y) coordinates of the sprite on the screen. Assigning
+a value to this attribute will move the sprite to the new coordinates.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.Label.rotation" class="name">var <span class="ident">rotation</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This attribute may be used to change the rotation of the sprite on the screen.
+Value may be a floating point number. A value of 0.0 means no rotation. A value 
+of 1.0 means  a rotation of 1 radian in a counter-clockwise direction. One radian
+is 180/pi or approximately 57.3 degrees.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.Label.scale" class="name">var <span class="ident">scale</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This attribute may be used to change the size of the sprite ('scale' it) on the 
+screen. Value may be a floating point number. A value of 1.0 means that the sprite
+image will keep its original size. A value of 2.0 would double it, etc.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.Label.selectable" class="name">var <span class="ident">selectable</span></p>
+            
+
+            
+  
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.Label.visible" class="name">var <span class="ident">visible</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This boolean attribute may be used to change the visibility of the sprite. Setting
+<code>ggame.Sprite.visible</code> to <code>False</code> will prevent the sprite from rendering on the 
+screen.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.Label.width" class="name">var <span class="ident">width</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This is an integer representing the display width of the sprite.
+Assigning a value to the width will scale the image horizontally.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.Label.x" class="name">var <span class="ident">x</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This represents the x-coordinate of the sprite on the screen. Assigning
+a value to this attribute will move the sprite horizontally.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.Label.y" class="name">var <span class="ident">y</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This represents the y-coordinate of the sprite on the screen. Assigning
+a value to this attribute will move the sprite vertically.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+      </div>
+      </div>
+      
+      <div class="item">
+      <p id="ggmath.LineSegment" class="name">class <span class="ident">LineSegment</span></p>
+      
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.LineSegment', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.LineSegment" class="source">
+    <pre><code>class LineSegment(_MathVisual):
+    
+    def __init__(self, start, end, style=LineStyle(1, Color(0,1))):
+        self._start = self.Eval(start)  # save function
+        self._end = self.Eval(end)
+        self._style = style
+        self._pstart = MathApp.logicalToPhysical(self._start())
+        self._pend = MathApp.logicalToPhysical(self._end())
+        super().__init__(LineAsset(self._pend[0]-self._pstart[0], 
+            self._pend[1]-self._pstart[1], style), self._pstart)
+
+    def _newAsset(self, start, end, style):
+        pstart = MathApp.logicalToPhysical(start())
+        pend = MathApp.logicalToPhysical(end())
+        if pstart != self._pstart or pend != self._pend:
+            self._pstart = pstart
+            self._pend = pend
+            self._updateAsset(LineAsset(pend[0]-pstart[0], pend[1]-pstart[1], style))
+            self.position = pstart
+
+    def _touchAsset(self):
+        self._newAsset(self._start, self._end, self._style)
+    
+    @property
+    def start(self):
+        return self._start()
+
+    @start.setter
+    def start(self, val):
+        newval = self.Eval(val)
+        if newval != self._start:
+            self._start = newval
+            self._touchAsset()
+
+    @property
+    def end(self):
+        return self._end()
+
+    @end.setter
+    def end(self, val):
+        newval = self.Eval(val)
+        if newval != self._end:
+            self._end = newval
+            self._touchAsset()
+        
+    def step(self):
+        self._touchAsset()
+
+    def physicalPointTouching(self, ppos):
+        return False
+        
+    def translate(self, pdisp):
+        pass
+</code></pre>
+  </div>
+</div>
+
+
+      <div class="class">
+          <h3>Ancestors (in MRO)</h3>
+          <ul class="class_list">
+          <li><a href="#ggmath.LineSegment">LineSegment</a></li>
+          <li>__pdoc_file_module__._MathVisual</li>
+          <li>ggame.Sprite</li>
+          <li>__pdoc_file_module__._MathDynamic</li>
+          <li>builtins.object</li>
+          </ul>
+          <h3>Static methods</h3>
+            
+  <div class="item">
+    <div class="name def" id="ggmath.LineSegment.__init__">
+    <p>def <span class="ident">__init__</span>(</p><p>self, start, end, style=&lt;ggame.LineStyle object at 0x7f9fd4ff7c50&gt;)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.LineSegment.__init__', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.LineSegment.__init__" class="source">
+    <pre><code>def __init__(self, start, end, style=LineStyle(1, Color(0,1))):
+    self._start = self.Eval(start)  # save function
+    self._end = self.Eval(end)
+    self._style = style
+    self._pstart = MathApp.logicalToPhysical(self._start())
+    self._pend = MathApp.logicalToPhysical(self._end())
+    super().__init__(LineAsset(self._pend[0]-self._pstart[0], 
+        self._pend[1]-self._pstart[1], style), self._pstart)
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.LineSegment.Eval">
+    <p>def <span class="ident">Eval</span>(</p><p>self, val)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.LineSegment.Eval', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.LineSegment.Eval" class="source">
+    <pre><code>def Eval(self, val):
+    if callable(val):
+        self._setDynamic() # dynamically defined .. must step
+        return val
+    else:
+        return lambda : val  
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.LineSegment.circularCollisionModel">
+    <p>def <span class="ident">circularCollisionModel</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Calling the sprite's <code>ggame.Sprite.circularCollisionModel</code> method 
+will configure the sprite to use a simple circular collision model 
+when checking for overlap with other sprites. In this model, the
+"collideable" area of the sprite is regarded as a circle whose
+diameter is equal to the mean of the width and height of the 
+asset image.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.LineSegment.circularCollisionModel', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.LineSegment.circularCollisionModel" class="source">
+    <pre><code>def circularCollisionModel(self):
+    """
+    Calling the sprite's `ggame.Sprite.circularCollisionModel` method 
+    will configure the sprite to use a simple circular collision model 
+    when checking for overlap with other sprites. In this model, the
+    "collideable" area of the sprite is regarded as a circle whose
+    diameter is equal to the mean of the width and height of the 
+    asset image.
+    """
+    self._collisionStyle = type(self)._circCollision
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.LineSegment.collidingWith">
+    <p>def <span class="ident">collidingWith</span>(</p><p>self, obj)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Return a boolean True if this sprite is currently overlapping the sprite 
+referenced by <code>obj</code>. Uses the collision model specified (rectangular, by 
+default). Collision/overlap decision is based purely on the overall, gross
+dimensions of the image rectangle. There is no attempt to verify that 
+non-transparent pixels in one sprite are actually overlapping visible
+pixels in another.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.LineSegment.collidingWith', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.LineSegment.collidingWith" class="source">
+    <pre><code>def collidingWith(self, obj):
+    """
+    Return a boolean True if this sprite is currently overlapping the sprite 
+    referenced by `obj`. Uses the collision model specified (rectangular, by 
+    default). Collision/overlap decision is based purely on the overall, gross
+    dimensions of the image rectangle. There is no attempt to verify that 
+    non-transparent pixels in one sprite are actually overlapping visible
+    pixels in another.
+    """
+    if self is obj:
+        return False
+    elif self._collisionStyle == obj._collisionStyle == type(self)._circCollision:
+        dist2 = (self.x - obj.x)**2 + (self.y - obj.y)**2
+        return dist2 < (self.radius + obj.radius)**2
+    else:
+        return (not (self.xmin > obj.xmax
+            or self.xmax < obj.xmin
+            or self.ymin > obj.ymax
+            or self.ymax < obj.ymin))
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.LineSegment.collidingWithSprites">
+    <p>def <span class="ident">collidingWithSprites</span>(</p><p>self, sclass=None)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Return a list of sprite objects identified by the <code>sclass</code> parameter
+that are currently colliding with (that is, with which the <code>ggame.Sprite.collidingWith</code>
+method returns True) this sprite. If <code>sclass</code> is set to <code>None</code> (default), then
+all other sprites are checked for collision, otherwise, only sprites whose
+class matches <code>sclass</code> are checked.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.LineSegment.collidingWithSprites', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.LineSegment.collidingWithSprites" class="source">
+    <pre><code>def collidingWithSprites(self, sclass = None):
+    """
+    Return a list of sprite objects identified by the `sclass` parameter
+    that are currently colliding with (that is, with which the `ggame.Sprite.collidingWith`
+    method returns True) this sprite. If `sclass` is set to `None` (default), then
+    all other sprites are checked for collision, otherwise, only sprites whose
+    class matches `sclass` are checked.
+    """
+    if sclass is None:
+        slist = App.spritelist
+    else:
+        slist = App.getSpritesbyClass(sclass)
+    return list(filter(self.collidingWith, slist))
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.LineSegment.destroy">
+    <p>def <span class="ident">destroy</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.LineSegment.destroy', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.LineSegment.destroy" class="source">
+    <pre><code>def destroy(self):
+    MathApp._removeVisual(self)
+    MathApp._removeMovable(self)
+    _MathDynamic.destroy(self)
+    Sprite.destroy(self)
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.LineSegment.firstImage">
+    <p>def <span class="ident">firstImage</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Select and display the <em>first</em> image used by this sprite.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.LineSegment.firstImage', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.LineSegment.firstImage" class="source">
+    <pre><code>def firstImage(self):
+    """
+    Select and display the *first* image used by this sprite.
+    """
+    self.GFX.texture = self.asset[0]
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.LineSegment.lastImage">
+    <p>def <span class="ident">lastImage</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Select and display the <em>last</em> image used by this sprite.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.LineSegment.lastImage', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.LineSegment.lastImage" class="source">
+    <pre><code>def lastImage(self):
+    """
+    Select and display the *last* image used by this sprite.
+    """
+    self.GFX.texture = self.asset[-1]
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.LineSegment.nextImage">
+    <p>def <span class="ident">nextImage</span>(</p><p>self, wrap=False)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Select and display the <em>next</em> image used by this sprite.
+If the current image is already the <em>last</em> image, then
+the image is not advanced.</p>
+<p>If the optional <code>wrap</code> parameter is set to <code>True</code>, then calling
+<code>ggame.Sprite.nextImage</code> on the last image will cause the <em>first</em>
+image to be loaded.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.LineSegment.nextImage', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.LineSegment.nextImage" class="source">
+    <pre><code>def nextImage(self, wrap = False):
+    """
+    Select and display the *next* image used by this sprite.
+    If the current image is already the *last* image, then
+    the image is not advanced.
+    If the optional `wrap` parameter is set to `True`, then calling
+    `ggame.Sprite.nextImage` on the last image will cause the *first*
+    image to be loaded.
+    """
+    self._index += 1
+    if self._index >= len(self.asset):
+        if wrap:
+            self._index = 0
+        else:
+            self._index = len(self.asset)-1
+    self.GFX.texture = self.asset[self._index]
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.LineSegment.physicalPointTouching">
+    <p>def <span class="ident">physicalPointTouching</span>(</p><p>self, ppos)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.LineSegment.physicalPointTouching', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.LineSegment.physicalPointTouching" class="source">
+    <pre><code>def physicalPointTouching(self, ppos):
+    return False
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.LineSegment.prevImage">
+    <p>def <span class="ident">prevImage</span>(</p><p>self, wrap=False)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Select and display the <em>previous</em> image used by this sprite.
+If the current image is already the <em>first</em> image, then
+the image is not changed.</p>
+<p>If the optional <code>wrap</code> parameter is set to <code>True</code>, then calling
+<code>ggame.Sprite.prevImage</code> on the first image will cause the <em>last</em>
+image to be loaded.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.LineSegment.prevImage', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.LineSegment.prevImage" class="source">
+    <pre><code>def prevImage(self, wrap = False):
+    """
+    Select and display the *previous* image used by this sprite.
+    If the current image is already the *first* image, then
+    the image is not changed.
+    If the optional `wrap` parameter is set to `True`, then calling
+    `ggame.Sprite.prevImage` on the first image will cause the *last*
+    image to be loaded.
+    """
+    self._index -= 1
+    if self._index < 0:
+        if wrap:
+            self._index = len(self.asset)-1
+        else:
+            self._index = 0
+    self.GFX.texture = self.asset[self._index]
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.LineSegment.processEvent">
+    <p>def <span class="ident">processEvent</span>(</p><p>self, event)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.LineSegment.processEvent', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.LineSegment.processEvent" class="source">
+    <pre><code>def processEvent(self, event):
+    pass
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.LineSegment.rectangularCollisionModel">
+    <p>def <span class="ident">rectangularCollisionModel</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Calling this method will configure the sprite to use a simple 
+rectangular collision model when checking for overlap with 
+other sprites. In this model, the "collideable" area of the sprite
+is equal to the rectangle of the asset image. If the sprite asset
+image includes a large transparent margin, this may cause the 
+collision box to be larger than desired.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.LineSegment.rectangularCollisionModel', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.LineSegment.rectangularCollisionModel" class="source">
+    <pre><code>def rectangularCollisionModel(self):
+    """
+    Calling this method will configure the sprite to use a simple 
+    rectangular collision model when checking for overlap with 
+    other sprites. In this model, the "collideable" area of the sprite
+    is equal to the rectangle of the asset image. If the sprite asset
+    image includes a large transparent margin, this may cause the 
+    collision box to be larger than desired.
+    """
+    self._collisionStyle = type(self)._rectCollision
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.LineSegment.select">
+    <p>def <span class="ident">select</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.LineSegment.select', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.LineSegment.select" class="source">
+    <pre><code>def select(self):
+    self.selected = True
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.LineSegment.setImage">
+    <p>def <span class="ident">setImage</span>(</p><p>self, index=0)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Select the image to display by giving its <code>index</code>, where an index
+of zero represents the <em>first</em> image in the asset.</p>
+<p>This is equivalent to setting the <code>ggame.Sprite.index</code> property
+directly.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.LineSegment.setImage', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.LineSegment.setImage" class="source">
+    <pre><code>def setImage(self, index=0):
+    """
+    Select the image to display by giving its `index`, where an index
+    of zero represents the *first* image in the asset.
+    This is equivalent to setting the `ggame.Sprite.index` property
+    directly.
+    """
+    self.index = index
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.LineSegment.step">
+    <p>def <span class="ident">step</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.LineSegment.step', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.LineSegment.step" class="source">
+    <pre><code>def step(self):
+    self._touchAsset()
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.LineSegment.translate">
+    <p>def <span class="ident">translate</span>(</p><p>self, pdisp)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.LineSegment.translate', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.LineSegment.translate" class="source">
+    <pre><code>def translate(self, pdisp):
+    pass
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.LineSegment.unselect">
+    <p>def <span class="ident">unselect</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.LineSegment.unselect', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.LineSegment.unselect" class="source">
+    <pre><code>def unselect(self):
+    self.selected = False
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+          <h3>Instance variables</h3>
+            <div class="item">
+            <p id="ggmath.LineSegment.center" class="name">var <span class="ident">center</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This attribute represents the horizontal and vertical position of the 
+sprite "center" as a tuple of floating point numbers. See the 
+descriptions for <code>ggame.Sprite.fxcenter</code> and <code>ggame.Sprite.fycenter</code> for 
+more details.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.LineSegment.end" class="name">var <span class="ident">end</span></p>
+            
+
+            
+  
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.LineSegment.fxcenter" class="name">var <span class="ident">fxcenter</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This represents the horizontal position of the sprite "center", as a floating
+point number between 0.0 and 1.0. A value of 0.0 means that the x-coordinate
+of the sprite refers to its left hand edge. A value of 1.0 refers to its 
+right hand edge. Any value in between may be specified. Values may be assigned
+to this attribute.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.LineSegment.fycenter" class="name">var <span class="ident">fycenter</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This represents the vertical position of the sprite "center", as a floating
+point number between 0.0 and 1.0. A value of 0.0 means that the x-coordinate
+of the sprite refers to its top edge. A value of 1.0 refers to its 
+bottom edge. Any value in between may be specified. Values may be assigned
+to this attribute.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.LineSegment.height" class="name">var <span class="ident">height</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This is an integer representing the display height of the sprite.
+Assigning a value to the height will scale the image vertically.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.LineSegment.index" class="name">var <span class="ident">index</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This is an integer index in to the list of images available for this sprite.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.LineSegment.movable" class="name">var <span class="ident">movable</span></p>
+            
+
+            
+  
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.LineSegment.position" class="name">var <span class="ident">position</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This represents the (x,y) coordinates of the sprite on the screen. Assigning
+a value to this attribute will move the sprite to the new coordinates.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.LineSegment.rotation" class="name">var <span class="ident">rotation</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This attribute may be used to change the rotation of the sprite on the screen.
+Value may be a floating point number. A value of 0.0 means no rotation. A value 
+of 1.0 means  a rotation of 1 radian in a counter-clockwise direction. One radian
+is 180/pi or approximately 57.3 degrees.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.LineSegment.scale" class="name">var <span class="ident">scale</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This attribute may be used to change the size of the sprite ('scale' it) on the 
+screen. Value may be a floating point number. A value of 1.0 means that the sprite
+image will keep its original size. A value of 2.0 would double it, etc.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.LineSegment.selectable" class="name">var <span class="ident">selectable</span></p>
+            
+
+            
+  
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.LineSegment.start" class="name">var <span class="ident">start</span></p>
+            
+
+            
+  
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.LineSegment.visible" class="name">var <span class="ident">visible</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This boolean attribute may be used to change the visibility of the sprite. Setting
+<code>ggame.Sprite.visible</code> to <code>False</code> will prevent the sprite from rendering on the 
+screen.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.LineSegment.width" class="name">var <span class="ident">width</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This is an integer representing the display width of the sprite.
+Assigning a value to the width will scale the image horizontally.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.LineSegment.x" class="name">var <span class="ident">x</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This represents the x-coordinate of the sprite on the screen. Assigning
+a value to this attribute will move the sprite horizontally.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.LineSegment.y" class="name">var <span class="ident">y</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This represents the y-coordinate of the sprite on the screen. Assigning
+a value to this attribute will move the sprite vertically.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+      </div>
+      </div>
+      
+      <div class="item">
+      <p id="ggmath.MathApp" class="name">class <span class="ident">MathApp</span></p>
+      
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.MathApp', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.MathApp" class="source">
+    <pre><code>class MathApp(App):
+    
+    _xscale = 200   # pixels per unit
+    _yscale = 200
+    _xcenter = 0    # center of screen in units
+    _ycenter = 0    
+    _mathVisualList = [] #
+    _mathDynamicList = []
+    _mathMovableList = []
+    _mathSelectableList = []
+    time = time()
+    
+    def __init__(self, scale=(_xscale, _yscale)):
+        super().__init__()
+        MathApp._xscale = scale[0]   # pixels per unit
+        MathApp._yscale = scale[1]
+        # register event callbacks
+        self.listenMouseEvent("click", self.handleMouseClick)
+        self.listenMouseEvent("mousedown", self.handleMouseDown)
+        self.listenMouseEvent("mouseup", self.handleMouseUp)
+        self.listenMouseEvent("mousemove", self.handleMouseMove)
+        self.listenMouseEvent("mousewheel", self.handleMouseWheel)
+        self.mouseDown = False
+        self.mouseCapturedObject = None
+        self.mouseX = self.mouseY = None
+        self._touchAllVisuals()
+        self.selectedObj = None
+
+    def step(self):
+        MathApp.time = time()
+        for spr in self._mathDynamicList:
+            spr.step()
+        
+    def _touchAllVisuals(self):
+        # touch all visual object assets to use scaling
+        for obj in self._mathVisualList:
+            obj._touchAsset()
+        
+
+    @classmethod
+    def logicalToPhysical(cls, lp):
+        xxform = lambda xvalue, xscale, xcenter, physwidth: int((xvalue-xcenter)*xscale + physwidth/2)
+        yxform = lambda yvalue, yscale, ycenter, physheight: int(physheight/2 - (yvalue-ycenter)*yscale)
+
+        try:
+            return (xxform(lp[0], cls._xscale, cls._xcenter, cls._win.width),
+                yxform(lp[1], cls._yscale, cls._ycenter, cls._win.height))
+        except AttributeError:
+            return lp
+            
+    @classmethod
+    def physicalToLogical(cls, pp):
+        xxform = lambda xvalue, xscale, xcenter, physwidth: (xvalue - physwidth/2)/xscale + xcenter
+        yxform = lambda yvalue, yscale, ycenter, physheight: (physheight/2 - yvalue)/yscale + ycenter
+
+        try:
+            return (xxform(pp[0], cls._xscale, cls._xcenter, cls._win.width),
+                yxform(pp[1], cls._yscale, cls._ycenter, cls._win.height))
+        except AttributeError:
+            return pp
+            
+    @classmethod
+    def translatePhysicalToLogical(cls, pp):
+        xxform = lambda xvalue, xscale: xvalue/xscale
+        yxform = lambda yvalue, yscale: -yvalue/yscale
+
+        try:
+            return (xxform(pp[0], cls._xscale), yxform(pp[1], cls._yscale))
+        except AttributeError:
+            return pp
+
+    def handleMouseClick(self, event):
+        found = False
+        for obj in self._mathSelectableList:
+            if obj.physicalPointTouching((event.x, event.y)):
+                found = True
+                if not obj.selected: 
+                    obj.select()
+                    self.selectedObj = obj
+        if not found and self.selectedObj:
+            self.selectedObj.unselect()
+            self.selectedObj = None
+
+    def handleMouseDown(self, event):
+        self.mouseDown = True
+        for obj in self._mathMovableList:
+            if obj.physicalPointTouching((event.x, event.y)):
+                self.mouseCapturedObject = obj
+                break
+
+    def handleMouseUp(self, event):
+        self.mouseDown = False
+        self.mouseCapturedObject = None
+
+    def handleMouseMove(self, event):
+        if not self.mouseX:
+            self.mouseX = event.x
+            self.mouseY = event.y
+        dx = event.x - self.mouseX
+        dy = event.y - self.mouseY
+        self.mouseX = event.x
+        self.mouseY = event.y
+        if self.mouseDown:
+            if self.mouseCapturedObject:
+                self.mouseCapturedObject.translate((dx, dy))
+            else:
+                lmove = self.translatePhysicalToLogical((dx, dy))
+                MathApp._xcenter -= lmove[0]
+                MathApp._ycenter -= lmove[1]
+                self._touchAllVisuals()
+                        
+
+    def handleMouseWheel(self, event):
+        pass
+     
+    @classmethod   
+    def distance(cls, pos1, pos2):
+        return sqrt((pos2[0]-pos1[0])**2 + (pos2[1]-pos1[1])**2)
+            
+    @classmethod
+    def _addVisual(cls, obj):
+        if isinstance(obj, _MathVisual):
+            cls._mathVisualList.append(obj)
+            
+    @classmethod
+    def _removeVisual(cls, obj):
+        if isinstance(obj, _MathVisual) and obj in cls._mathVisualList:
+            cls._mathVisualList.remove(obj)
+
+    @classmethod
+    def _addDynamic(cls, obj):
+        if isinstance(obj, _MathDynamic) and obj not in cls._mathDynamicList:
+            cls._mathDynamicList.append(obj)
+            
+    @classmethod
+    def _removeDynamic(cls, obj):
+        if isinstance(obj, _MathDynamic) and obj in cls._mathDynamicList:
+            cls._mathDynamicList.remove(obj)
+
+    @classmethod
+    def _addMovable(cls, obj):
+        if isinstance(obj, _MathVisual) and obj not in cls._mathMovableList:
+            cls._mathMovableList.append(obj)
+            
+    @classmethod
+    def _removeMovable(cls, obj):
+        if isinstance(obj, _MathVisual) and obj in cls._mathMovableList:
+            cls._mathMovableList.remove(obj)
+
+    @classmethod
+    def _addSelectable(cls, obj):
+        if isinstance(obj, _MathVisual) and obj not in cls._mathSelectableList:
+            cls._mathSelectableList.append(obj)
+            
+    @classmethod
+    def _removeSelectable(cls, obj):
+        if isinstance(obj, _MathVisual) and obj in cls._mathSelectableList:
+            cls._mathSelectableList.remove(obj)
+</code></pre>
+  </div>
+</div>
+
+
+      <div class="class">
+          <h3>Ancestors (in MRO)</h3>
+          <ul class="class_list">
+          <li><a href="#ggmath.MathApp">MathApp</a></li>
+          <li>ggame.App</li>
+          <li>builtins.object</li>
+          </ul>
+          <h3>Class variables</h3>
+            <div class="item">
+            <p id="ggmath.MathApp.spritelist" class="name">var <span class="ident">spritelist</span></p>
+            
+
+            
+  
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.MathApp.time" class="name">var <span class="ident">time</span></p>
+            
+
+            
+  
+  <div class="source_cont">
+</div>
+
+            </div>
+          <h3>Static methods</h3>
+            
+  <div class="item">
+    <div class="name def" id="ggmath.MathApp.__init__">
+    <p>def <span class="ident">__init__</span>(</p><p>self, scale=(200, 200))</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.MathApp.__init__', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.MathApp.__init__" class="source">
+    <pre><code>def __init__(self, scale=(_xscale, _yscale)):
+    super().__init__()
+    MathApp._xscale = scale[0]   # pixels per unit
+    MathApp._yscale = scale[1]
+    # register event callbacks
+    self.listenMouseEvent("click", self.handleMouseClick)
+    self.listenMouseEvent("mousedown", self.handleMouseDown)
+    self.listenMouseEvent("mouseup", self.handleMouseUp)
+    self.listenMouseEvent("mousemove", self.handleMouseMove)
+    self.listenMouseEvent("mousewheel", self.handleMouseWheel)
+    self.mouseDown = False
+    self.mouseCapturedObject = None
+    self.mouseX = self.mouseY = None
+    self._touchAllVisuals()
+    self.selectedObj = None
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.MathApp.handleMouseClick">
+    <p>def <span class="ident">handleMouseClick</span>(</p><p>self, event)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.MathApp.handleMouseClick', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.MathApp.handleMouseClick" class="source">
+    <pre><code>def handleMouseClick(self, event):
+    found = False
+    for obj in self._mathSelectableList:
+        if obj.physicalPointTouching((event.x, event.y)):
+            found = True
+            if not obj.selected: 
+                obj.select()
+                self.selectedObj = obj
+    if not found and self.selectedObj:
+        self.selectedObj.unselect()
+        self.selectedObj = None
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.MathApp.handleMouseDown">
+    <p>def <span class="ident">handleMouseDown</span>(</p><p>self, event)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.MathApp.handleMouseDown', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.MathApp.handleMouseDown" class="source">
+    <pre><code>def handleMouseDown(self, event):
+    self.mouseDown = True
+    for obj in self._mathMovableList:
+        if obj.physicalPointTouching((event.x, event.y)):
+            self.mouseCapturedObject = obj
+            break
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.MathApp.handleMouseMove">
+    <p>def <span class="ident">handleMouseMove</span>(</p><p>self, event)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.MathApp.handleMouseMove', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.MathApp.handleMouseMove" class="source">
+    <pre><code>def handleMouseMove(self, event):
+    if not self.mouseX:
+        self.mouseX = event.x
+        self.mouseY = event.y
+    dx = event.x - self.mouseX
+    dy = event.y - self.mouseY
+    self.mouseX = event.x
+    self.mouseY = event.y
+    if self.mouseDown:
+        if self.mouseCapturedObject:
+            self.mouseCapturedObject.translate((dx, dy))
+        else:
+            lmove = self.translatePhysicalToLogical((dx, dy))
+            MathApp._xcenter -= lmove[0]
+            MathApp._ycenter -= lmove[1]
+            self._touchAllVisuals()
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.MathApp.handleMouseUp">
+    <p>def <span class="ident">handleMouseUp</span>(</p><p>self, event)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.MathApp.handleMouseUp', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.MathApp.handleMouseUp" class="source">
+    <pre><code>def handleMouseUp(self, event):
+    self.mouseDown = False
+    self.mouseCapturedObject = None
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.MathApp.handleMouseWheel">
+    <p>def <span class="ident">handleMouseWheel</span>(</p><p>self, event)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.MathApp.handleMouseWheel', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.MathApp.handleMouseWheel" class="source">
+    <pre><code>def handleMouseWheel(self, event):
+    pass
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.MathApp.run">
+    <p>def <span class="ident">run</span>(</p><p>self, userfunc=None)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Calling the <code>ggame.App.run</code> method begins the animation process whereby the 
+<code>ggame.App.step</code> method is called once per animation frame.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.MathApp.run', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.MathApp.run" class="source">
+    <pre><code>def run(self, userfunc = None):
+    """
+    Calling the `ggame.App.run` method begins the animation process whereby the 
+    `ggame.App.step` method is called once per animation frame.
+    """
+    self.userfunc = userfunc
+    App._win.animate(self._animate)
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.MathApp.step">
+    <p>def <span class="ident">step</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.MathApp.step', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.MathApp.step" class="source">
+    <pre><code>def step(self):
+    MathApp.time = time()
+    for spr in self._mathDynamicList:
+        spr.step()
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+          <h3>Instance variables</h3>
+            <div class="item">
+            <p id="ggmath.MathApp.mouseCapturedObject" class="name">var <span class="ident">mouseCapturedObject</span></p>
+            
+
+            
+  
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.MathApp.mouseDown" class="name">var <span class="ident">mouseDown</span></p>
+            
+
+            
+  
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.MathApp.selectedObj" class="name">var <span class="ident">selectedObj</span></p>
+            
+
+            
+  
+  <div class="source_cont">
+</div>
+
+            </div>
+      </div>
+      </div>
+      
+      <div class="item">
+      <p id="ggmath.Point" class="name">class <span class="ident">Point</span></p>
+      
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.Point', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.Point" class="source">
+    <pre><code>class Point(_MathVisual):
+    
+    def __init__(self, pos, size=5, color=Color(0,1), style=LineStyle(0, Color(0,1))):
+        self._pos = self.Eval(pos)  # create a *callable* position function
+        self._ppos = MathApp.logicalToPhysical(self._pos()) # physical position
+        self._size = size
+        self._color = color
+        self._style = style
+        super().__init__(CircleAsset(size, style, color), self._ppos)
+        self.center = (0.5, 0.5)
+        
+    def __call__(self):
+        return self._pos()
+
+    def _newAsset(self, pos, size, color, style):
+        ppos = MathApp.logicalToPhysical(pos())
+        if ppos != self._ppos:
+            self._ppos = ppos
+            self._updateAsset(CircleAsset(size, style, color))
+            self.position = ppos
+            self._setExtents()
+
+    def _touchAsset(self):
+        self._newAsset(self._pos, self._size, self._color, self._style)
+
+    def step(self):
+        self._touchAsset()
+
+    def physicalPointTouching(self, ppos):
+        return MathApp.distance(ppos, self._ppos) < self._size
+        
+    def translate(self, pdisp):
+        ldisp = MathApp.translatePhysicalToLogical(pdisp)
+        pos = self._pos()
+        self._pos = self.Eval((pos[0] + ldisp[0], pos[1] + ldisp[1]))
+        self._touchAsset()
+</code></pre>
+  </div>
+</div>
+
+
+      <div class="class">
+          <h3>Ancestors (in MRO)</h3>
+          <ul class="class_list">
+          <li><a href="#ggmath.Point">Point</a></li>
+          <li>__pdoc_file_module__._MathVisual</li>
+          <li>ggame.Sprite</li>
+          <li>__pdoc_file_module__._MathDynamic</li>
+          <li>builtins.object</li>
+          </ul>
+          <h3>Static methods</h3>
+            
+  <div class="item">
+    <div class="name def" id="ggmath.Point.__init__">
+    <p>def <span class="ident">__init__</span>(</p><p>self, pos, size=5, color=&lt;ggame.Color object at 0x7f9fd4ff7950&gt;, style=&lt;ggame.LineStyle object at 0x7f9fd4ff79d0&gt;)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.Point.__init__', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.Point.__init__" class="source">
+    <pre><code>def __init__(self, pos, size=5, color=Color(0,1), style=LineStyle(0, Color(0,1))):
+    self._pos = self.Eval(pos)  # create a *callable* position function
+    self._ppos = MathApp.logicalToPhysical(self._pos()) # physical position
+    self._size = size
+    self._color = color
+    self._style = style
+    super().__init__(CircleAsset(size, style, color), self._ppos)
+    self.center = (0.5, 0.5)
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.Point.Eval">
+    <p>def <span class="ident">Eval</span>(</p><p>self, val)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.Point.Eval', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.Point.Eval" class="source">
+    <pre><code>def Eval(self, val):
+    if callable(val):
+        self._setDynamic() # dynamically defined .. must step
+        return val
+    else:
+        return lambda : val  
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.Point.circularCollisionModel">
+    <p>def <span class="ident">circularCollisionModel</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Calling the sprite's <code>ggame.Sprite.circularCollisionModel</code> method 
+will configure the sprite to use a simple circular collision model 
+when checking for overlap with other sprites. In this model, the
+"collideable" area of the sprite is regarded as a circle whose
+diameter is equal to the mean of the width and height of the 
+asset image.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.Point.circularCollisionModel', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.Point.circularCollisionModel" class="source">
+    <pre><code>def circularCollisionModel(self):
+    """
+    Calling the sprite's `ggame.Sprite.circularCollisionModel` method 
+    will configure the sprite to use a simple circular collision model 
+    when checking for overlap with other sprites. In this model, the
+    "collideable" area of the sprite is regarded as a circle whose
+    diameter is equal to the mean of the width and height of the 
+    asset image.
+    """
+    self._collisionStyle = type(self)._circCollision
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.Point.collidingWith">
+    <p>def <span class="ident">collidingWith</span>(</p><p>self, obj)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Return a boolean True if this sprite is currently overlapping the sprite 
+referenced by <code>obj</code>. Uses the collision model specified (rectangular, by 
+default). Collision/overlap decision is based purely on the overall, gross
+dimensions of the image rectangle. There is no attempt to verify that 
+non-transparent pixels in one sprite are actually overlapping visible
+pixels in another.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.Point.collidingWith', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.Point.collidingWith" class="source">
+    <pre><code>def collidingWith(self, obj):
+    """
+    Return a boolean True if this sprite is currently overlapping the sprite 
+    referenced by `obj`. Uses the collision model specified (rectangular, by 
+    default). Collision/overlap decision is based purely on the overall, gross
+    dimensions of the image rectangle. There is no attempt to verify that 
+    non-transparent pixels in one sprite are actually overlapping visible
+    pixels in another.
+    """
+    if self is obj:
+        return False
+    elif self._collisionStyle == obj._collisionStyle == type(self)._circCollision:
+        dist2 = (self.x - obj.x)**2 + (self.y - obj.y)**2
+        return dist2 < (self.radius + obj.radius)**2
+    else:
+        return (not (self.xmin > obj.xmax
+            or self.xmax < obj.xmin
+            or self.ymin > obj.ymax
+            or self.ymax < obj.ymin))
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.Point.collidingWithSprites">
+    <p>def <span class="ident">collidingWithSprites</span>(</p><p>self, sclass=None)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Return a list of sprite objects identified by the <code>sclass</code> parameter
+that are currently colliding with (that is, with which the <code>ggame.Sprite.collidingWith</code>
+method returns True) this sprite. If <code>sclass</code> is set to <code>None</code> (default), then
+all other sprites are checked for collision, otherwise, only sprites whose
+class matches <code>sclass</code> are checked.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.Point.collidingWithSprites', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.Point.collidingWithSprites" class="source">
+    <pre><code>def collidingWithSprites(self, sclass = None):
+    """
+    Return a list of sprite objects identified by the `sclass` parameter
+    that are currently colliding with (that is, with which the `ggame.Sprite.collidingWith`
+    method returns True) this sprite. If `sclass` is set to `None` (default), then
+    all other sprites are checked for collision, otherwise, only sprites whose
+    class matches `sclass` are checked.
+    """
+    if sclass is None:
+        slist = App.spritelist
+    else:
+        slist = App.getSpritesbyClass(sclass)
+    return list(filter(self.collidingWith, slist))
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.Point.destroy">
+    <p>def <span class="ident">destroy</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.Point.destroy', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.Point.destroy" class="source">
+    <pre><code>def destroy(self):
+    MathApp._removeVisual(self)
+    MathApp._removeMovable(self)
+    _MathDynamic.destroy(self)
+    Sprite.destroy(self)
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.Point.firstImage">
+    <p>def <span class="ident">firstImage</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Select and display the <em>first</em> image used by this sprite.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.Point.firstImage', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.Point.firstImage" class="source">
+    <pre><code>def firstImage(self):
+    """
+    Select and display the *first* image used by this sprite.
+    """
+    self.GFX.texture = self.asset[0]
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.Point.lastImage">
+    <p>def <span class="ident">lastImage</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Select and display the <em>last</em> image used by this sprite.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.Point.lastImage', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.Point.lastImage" class="source">
+    <pre><code>def lastImage(self):
+    """
+    Select and display the *last* image used by this sprite.
+    """
+    self.GFX.texture = self.asset[-1]
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.Point.nextImage">
+    <p>def <span class="ident">nextImage</span>(</p><p>self, wrap=False)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Select and display the <em>next</em> image used by this sprite.
+If the current image is already the <em>last</em> image, then
+the image is not advanced.</p>
+<p>If the optional <code>wrap</code> parameter is set to <code>True</code>, then calling
+<code>ggame.Sprite.nextImage</code> on the last image will cause the <em>first</em>
+image to be loaded.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.Point.nextImage', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.Point.nextImage" class="source">
+    <pre><code>def nextImage(self, wrap = False):
+    """
+    Select and display the *next* image used by this sprite.
+    If the current image is already the *last* image, then
+    the image is not advanced.
+    If the optional `wrap` parameter is set to `True`, then calling
+    `ggame.Sprite.nextImage` on the last image will cause the *first*
+    image to be loaded.
+    """
+    self._index += 1
+    if self._index >= len(self.asset):
+        if wrap:
+            self._index = 0
+        else:
+            self._index = len(self.asset)-1
+    self.GFX.texture = self.asset[self._index]
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.Point.physicalPointTouching">
+    <p>def <span class="ident">physicalPointTouching</span>(</p><p>self, ppos)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.Point.physicalPointTouching', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.Point.physicalPointTouching" class="source">
+    <pre><code>def physicalPointTouching(self, ppos):
+    return MathApp.distance(ppos, self._ppos) < self._size
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.Point.prevImage">
+    <p>def <span class="ident">prevImage</span>(</p><p>self, wrap=False)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Select and display the <em>previous</em> image used by this sprite.
+If the current image is already the <em>first</em> image, then
+the image is not changed.</p>
+<p>If the optional <code>wrap</code> parameter is set to <code>True</code>, then calling
+<code>ggame.Sprite.prevImage</code> on the first image will cause the <em>last</em>
+image to be loaded.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.Point.prevImage', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.Point.prevImage" class="source">
+    <pre><code>def prevImage(self, wrap = False):
+    """
+    Select and display the *previous* image used by this sprite.
+    If the current image is already the *first* image, then
+    the image is not changed.
+    If the optional `wrap` parameter is set to `True`, then calling
+    `ggame.Sprite.prevImage` on the first image will cause the *last*
+    image to be loaded.
+    """
+    self._index -= 1
+    if self._index < 0:
+        if wrap:
+            self._index = len(self.asset)-1
+        else:
+            self._index = 0
+    self.GFX.texture = self.asset[self._index]
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.Point.processEvent">
+    <p>def <span class="ident">processEvent</span>(</p><p>self, event)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.Point.processEvent', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.Point.processEvent" class="source">
+    <pre><code>def processEvent(self, event):
+    pass
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.Point.rectangularCollisionModel">
+    <p>def <span class="ident">rectangularCollisionModel</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Calling this method will configure the sprite to use a simple 
+rectangular collision model when checking for overlap with 
+other sprites. In this model, the "collideable" area of the sprite
+is equal to the rectangle of the asset image. If the sprite asset
+image includes a large transparent margin, this may cause the 
+collision box to be larger than desired.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.Point.rectangularCollisionModel', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.Point.rectangularCollisionModel" class="source">
+    <pre><code>def rectangularCollisionModel(self):
+    """
+    Calling this method will configure the sprite to use a simple 
+    rectangular collision model when checking for overlap with 
+    other sprites. In this model, the "collideable" area of the sprite
+    is equal to the rectangle of the asset image. If the sprite asset
+    image includes a large transparent margin, this may cause the 
+    collision box to be larger than desired.
+    """
+    self._collisionStyle = type(self)._rectCollision
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.Point.select">
+    <p>def <span class="ident">select</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.Point.select', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.Point.select" class="source">
+    <pre><code>def select(self):
+    self.selected = True
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.Point.setImage">
+    <p>def <span class="ident">setImage</span>(</p><p>self, index=0)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Select the image to display by giving its <code>index</code>, where an index
+of zero represents the <em>first</em> image in the asset.</p>
+<p>This is equivalent to setting the <code>ggame.Sprite.index</code> property
+directly.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.Point.setImage', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.Point.setImage" class="source">
+    <pre><code>def setImage(self, index=0):
+    """
+    Select the image to display by giving its `index`, where an index
+    of zero represents the *first* image in the asset.
+    This is equivalent to setting the `ggame.Sprite.index` property
+    directly.
+    """
+    self.index = index
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.Point.step">
+    <p>def <span class="ident">step</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.Point.step', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.Point.step" class="source">
+    <pre><code>def step(self):
+    self._touchAsset()
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.Point.translate">
+    <p>def <span class="ident">translate</span>(</p><p>self, pdisp)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.Point.translate', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.Point.translate" class="source">
+    <pre><code>def translate(self, pdisp):
+    ldisp = MathApp.translatePhysicalToLogical(pdisp)
+    pos = self._pos()
+    self._pos = self.Eval((pos[0] + ldisp[0], pos[1] + ldisp[1]))
+    self._touchAsset()
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.Point.unselect">
+    <p>def <span class="ident">unselect</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.Point.unselect', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.Point.unselect" class="source">
+    <pre><code>def unselect(self):
+    self.selected = False
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+          <h3>Instance variables</h3>
+            <div class="item">
+            <p id="ggmath.Point.center" class="name">var <span class="ident">center</span></p>
+            
+
+            
+  
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.Point.fxcenter" class="name">var <span class="ident">fxcenter</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This represents the horizontal position of the sprite "center", as a floating
+point number between 0.0 and 1.0. A value of 0.0 means that the x-coordinate
+of the sprite refers to its left hand edge. A value of 1.0 refers to its 
+right hand edge. Any value in between may be specified. Values may be assigned
+to this attribute.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.Point.fycenter" class="name">var <span class="ident">fycenter</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This represents the vertical position of the sprite "center", as a floating
+point number between 0.0 and 1.0. A value of 0.0 means that the x-coordinate
+of the sprite refers to its top edge. A value of 1.0 refers to its 
+bottom edge. Any value in between may be specified. Values may be assigned
+to this attribute.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.Point.height" class="name">var <span class="ident">height</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This is an integer representing the display height of the sprite.
+Assigning a value to the height will scale the image vertically.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.Point.index" class="name">var <span class="ident">index</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This is an integer index in to the list of images available for this sprite.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.Point.movable" class="name">var <span class="ident">movable</span></p>
+            
+
+            
+  
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.Point.position" class="name">var <span class="ident">position</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This represents the (x,y) coordinates of the sprite on the screen. Assigning
+a value to this attribute will move the sprite to the new coordinates.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.Point.rotation" class="name">var <span class="ident">rotation</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This attribute may be used to change the rotation of the sprite on the screen.
+Value may be a floating point number. A value of 0.0 means no rotation. A value 
+of 1.0 means  a rotation of 1 radian in a counter-clockwise direction. One radian
+is 180/pi or approximately 57.3 degrees.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.Point.scale" class="name">var <span class="ident">scale</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This attribute may be used to change the size of the sprite ('scale' it) on the 
+screen. Value may be a floating point number. A value of 1.0 means that the sprite
+image will keep its original size. A value of 2.0 would double it, etc.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.Point.selectable" class="name">var <span class="ident">selectable</span></p>
+            
+
+            
+  
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.Point.visible" class="name">var <span class="ident">visible</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This boolean attribute may be used to change the visibility of the sprite. Setting
+<code>ggame.Sprite.visible</code> to <code>False</code> will prevent the sprite from rendering on the 
+screen.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.Point.width" class="name">var <span class="ident">width</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This is an integer representing the display width of the sprite.
+Assigning a value to the width will scale the image horizontally.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.Point.x" class="name">var <span class="ident">x</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This represents the x-coordinate of the sprite on the screen. Assigning
+a value to this attribute will move the sprite horizontally.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="ggmath.Point.y" class="name">var <span class="ident">y</span></p>
+            
+
+            
+  
+    <div class="desc"><p>This represents the y-coordinate of the sprite on the screen. Assigning
+a value to this attribute will move the sprite vertically.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+      </div>
+      </div>
+      
+      <div class="item">
+      <p id="ggmath.Timer" class="name">class <span class="ident">Timer</span></p>
+      
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.Timer', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.Timer" class="source">
+    <pre><code>class Timer(_MathDynamic):
+    
+    def __init__(self):
+        super().__init__()
+        self.reset()
+        self.step()
+        MathApp._addDynamic(self)  # always dynamically defined
+        
+    def reset(self):
+        self._reset = MathApp.time
+        
+    def step(self):
+        self.time = MathApp.time - self._reset
+</code></pre>
+  </div>
+</div>
+
+
+      <div class="class">
+          <h3>Ancestors (in MRO)</h3>
+          <ul class="class_list">
+          <li><a href="#ggmath.Timer">Timer</a></li>
+          <li>__pdoc_file_module__._MathDynamic</li>
+          <li>builtins.object</li>
+          </ul>
+          <h3>Static methods</h3>
+            
+  <div class="item">
+    <div class="name def" id="ggmath.Timer.__init__">
+    <p>def <span class="ident">__init__</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.Timer.__init__', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.Timer.__init__" class="source">
+    <pre><code>def __init__(self):
+    super().__init__()
+    self.reset()
+    self.step()
+    MathApp._addDynamic(self)  # always dynamically defined
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.Timer.Eval">
+    <p>def <span class="ident">Eval</span>(</p><p>self, val)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.Timer.Eval', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.Timer.Eval" class="source">
+    <pre><code>def Eval(self, val):
+    if callable(val):
+        self._setDynamic() # dynamically defined .. must step
+        return val
+    else:
+        return lambda : val  
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.Timer.destroy">
+    <p>def <span class="ident">destroy</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.Timer.destroy', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.Timer.destroy" class="source">
+    <pre><code>def destroy(self):
+    MathApp._removeDynamic(self)
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.Timer.reset">
+    <p>def <span class="ident">reset</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.Timer.reset', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.Timer.reset" class="source">
+    <pre><code>def reset(self):
+    self._reset = MathApp.time
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="ggmath.Timer.step">
+    <p>def <span class="ident">step</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-ggmath.Timer.step', this);">Show source &equiv;</a></p>
+  <div id="source-ggmath.Timer.step" class="source">
+    <pre><code>def step(self):
+    self.time = MathApp.time - self._reset
+</code></pre>
+  </div>
+</div>
+
+  </div>
+  
+      </div>
+      </div>
+
+  </section>
+
+    </article>
+  <div class="clear"> </div>
+  <footer id="footer">
+    <p>
+      Documentation generated by
+      <a href="https://github.com/BurntSushi/pdoc">pdoc 0.3.1</a>
+    </p>
+
+    <p>pdoc is in the public domain with the
+      <a href="http://unlicense.org">UNLICENSE</a></p>
+
+    <p>Design by <a href="http://nadh.in">Kailash Nadh</a></p>
+  </footer>
+</div>
+</body>
+</html>
